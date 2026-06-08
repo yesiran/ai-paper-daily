@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-09",
+    "title": "没人判分，让世界当裁判",
+    "paper": "OpenSkill: Open-World Self-Evolution for LLM Agents"
+  },
+  {
     "date": "2026-06-08",
     "title": "不训适配器，生成它",
     "paper": "Code2LoRA: Hypernetwork-Generated Adapters for Code Language Models under Software Evolution"
