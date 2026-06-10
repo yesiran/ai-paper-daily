@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-11",
+    "title": "信任域不该是墙，该是弹簧",
+    "paper": "Rethinking the Divergence Regularization in LLM RL"
+  },
+  {
     "date": "2026-06-10",
     "title": "记得越多，越是累赘",
     "paper": "FlashMemory-DeepSeek-V4: Lightning Index Ultra-Long Context via Lookahead Sparse Attention"
