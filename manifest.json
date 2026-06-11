@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-12",
+    "title": "失败向上长：一棵假设树，让 AI 第一次越做越懂",
+    "paper": "Toward Generalist Autonomous Research via Hypothesis-Tree Refinement (Arbor)"
+  },
+  {
     "date": "2026-06-11",
     "title": "信任域不该是墙，该是弹簧",
     "paper": "Rethinking the Divergence Regularization in LLM RL"
