@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-14",
+    "title": "给「默想」装上一对开关——潜在推理第一次既能被 RL 训练、又能被人看懂",
+    "paper": "Demystifying Hidden-State Recurrence: Switchable Latent Reasoning with On-Policy Reinforcement Learning"
+  },
+  {
     "date": "2026-06-12",
     "title": "失败向上长：一棵假设树，让 AI 第一次越做越懂",
     "paper": "Toward Generalist Autonomous Research via Hypothesis-Tree Refinement (Arbor)"
