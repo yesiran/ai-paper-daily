@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-15",
+    "title": "稀疏注意力长大成人：只看该看的地方",
+    "paper": "MiniMax Sparse Attention"
+  },
+  {
     "date": "2026-06-14",
     "title": "给「默想」装上一对开关——潜在推理第一次既能被 RL 训练、又能被人看懂",
     "paper": "Demystifying Hidden-State Recurrence: Switchable Latent Reasoning with On-Policy Reinforcement Learning"
