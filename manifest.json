@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-16",
+    "title": "记忆不是翻出来的，是想出来的",
+    "paper": "Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents"
+  },
+  {
     "date": "2026-06-15",
     "title": "稀疏注意力长大成人：只看该看的地方",
     "paper": "MiniMax Sparse Attention"
