@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate%2888%20.5%20.5%29%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23a23a2a%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2323211e%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22url%28%23g%29%22%2F%3E%3Ccircle%20cx%3D%2229%22%20cy%3D%2223%22%20r%3D%2214%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222%22%20opacity%3D%220.28%22%2F%3E%3Ccircle%20cx%3D%2228%22%20cy%3D%2249%22%20r%3D%2220%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%223%22%20opacity%3D%220.25%22%2F%3E%3Ccircle%20cx%3D%2251%22%20cy%3D%2227%22%20r%3D%2212%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%223%22%20opacity%3D%220.22%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2232%22%20dy%3D%22.36em%22%20text-anchor%3D%22middle%22%20font-family%3D%27-apple-system%2C%22PingFang%20SC%22%2C%22Noto%20Sans%20SC%22%2Csans-serif%27%20font-size%3D%2234%22%20font-weight%3D%22700%22%20fill%3D%22%23faf8f4%22%3E%E6%96%87%3C%2Ftext%3E%3C%2Fsvg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 不再等你开口 · YSR Read Paper</title>
+<style>
+  :root{
+    --paper:#faf8f4; --ink:#23211e; --muted:#7a756c; --faint:#a8a298;
+    --rule:#e7e1d6; --accent:#a23a2a; --accent-soft:#f0e3df;
+    --serif:"Songti SC","Noto Serif SC",Georgia,"Times New Roman",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,system-ui,sans-serif;
+    --col:760px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.85;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+  a:hover{border-bottom-color:var(--accent)}
+  .wrap{display:grid;grid-template-columns:1fr var(--col) 1fr;gap:0}
+  .rail{grid-column:1;position:sticky;top:0;align-self:start;height:100vh;
+    padding:54px 28px;display:flex;flex-direction:column;justify-content:center}
+  .main{grid-column:2;padding:72px 32px 120px}
+  .rail-r{grid-column:3}
+  .toc{font-size:13px;line-height:2.2;max-width:170px;margin-left:auto}
+  .toc .kicker{font-family:var(--serif);color:var(--faint);letter-spacing:.16em;
+    font-size:11px;text-transform:uppercase;margin-bottom:14px}
+  .toc a{display:block;color:var(--muted);border:0;padding-left:14px;
+    border-left:2px solid var(--rule);transition:.2s}
+  .toc a:hover{color:var(--accent);border-left-color:var(--accent)}
+  .hero{border-bottom:1px solid var(--rule);padding-bottom:38px;margin-bottom:48px}
+  .hero .tag{font-family:var(--serif);letter-spacing:.22em;font-size:12px;
+    text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:44px;line-height:1.25;
+    letter-spacing:.01em;margin:0 0 16px}
+  .hero .en{font-family:var(--serif);font-style:italic;color:var(--muted);
+    font-size:17px;line-height:1.5;margin-bottom:24px}
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{font-size:12.5px;color:var(--muted);background:#fff;border:1px solid var(--rule);
+    border-radius:100px;padding:4px 13px}
+  .pill.hot{color:var(--accent);border-color:var(--accent-soft);background:var(--accent-soft)}
+  section{margin:0 0 64px;scroll-margin-top:32px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px;
+    padding-bottom:12px;border-bottom:1px solid var(--rule)}
+  .sec-num{font-family:var(--serif);font-size:15px;color:#fff;background:var(--accent);
+    width:30px;height:30px;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;flex:0 0 auto;font-weight:600}
+  .sec-head h2{font-family:var(--serif);font-weight:600;font-size:27px;margin:0}
+  .sec-head .lens{margin-left:auto;font-size:12px;color:var(--faint);font-family:var(--serif)}
+  .main h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:34px 0 12px}
+  .main h4{font-weight:600;font-size:16px;color:var(--accent);margin:24px 0 8px}
+  .main p{margin:0 0 18px}
+  .main strong{font-weight:600;color:#000}
+  .main ul,.main ol{margin:0 0 18px;padding-left:22px}
+  .main li{margin:0 0 8px}
+  .main em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+  blockquote{margin:34px 0;padding:6px 0 6px 26px;border-left:3px solid var(--accent);
+    font-family:var(--serif);font-size:22px;line-height:1.6;color:var(--ink)}
+  blockquote cite{display:block;margin-top:10px;font-family:var(--sans);font-style:normal;
+    font-size:13px;color:var(--faint)}
+  figure{margin:40px 0;text-align:center}
+  figure svg{max-width:100%;border:1px solid var(--rule);border-radius:6px;
+    box-shadow:0 2px 24px rgba(0,0,0,.06)}
+  figcaption{font-size:13px;color:var(--faint);margin-top:12px;font-family:var(--serif)}
+  pre.ascii{background:#fff;border:1px solid var(--rule);border-radius:6px;
+    padding:16px 18px;overflow-x:auto;font-family:"SF Mono",Menlo,Consolas,monospace;
+    font-size:13px;line-height:1.5;color:#333}
+  .turn{margin:0 0 20px;padding-left:16px;border-left:2px solid var(--rule)}
+  .turn .who{font-family:var(--serif);font-weight:600;color:var(--accent);font-size:15px;margin-bottom:4px}
+  .qa{margin:0 0 24px;padding:16px;background:#fff;border-radius:6px;border:1px solid var(--rule)}
+  .qa .q{font-weight:600;color:#000;margin-bottom:8px}
+  .qa .q::before{content:"Q  ";color:var(--accent);font-family:var(--serif)}
+  .qa .a{color:var(--muted);margin:0}
+  .qa .a::before{content:"A  ";color:var(--faint);font-family:var(--serif)}
+  .qa.open{border-left:3px solid var(--accent)}
+  .river-layer{margin:0 0 28px;padding:18px 20px;background:#fff;border-radius:6px;border:1px solid var(--rule)}
+  .river-layer .layer-tag{font-family:var(--serif);font-size:12px;color:var(--accent);
+    letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+  .river-layer h4{font-family:var(--serif);font-weight:600;font-size:17px;margin:0 0 10px;color:var(--ink)}
+  .river-arrow{text-align:center;color:var(--faint);font-size:22px;margin:4px 0 12px}
+  .sources{border-top:1px solid var(--rule);padding-top:28px;margin-top:72px;
+    font-size:13.5px;color:var(--muted);line-height:1.9}
+  .sources h3{font-family:var(--serif);font-size:15px;color:var(--ink);margin:0 0 12px}
+  .sign{margin-top:42px;font-family:var(--serif);font-size:13px;color:var(--faint);
+    text-align:center;letter-spacing:.1em}
+  @media (max-width:1100px){
+    .wrap{grid-template-columns:1fr;}
+    .rail,.rail-r{display:none}
+    .main{grid-column:1;max-width:var(--col);margin:0 auto;padding:48px 22px 90px}
+  }
+  @media (max-width:560px){
+    body{font-size:16px}
+    .hero h1{font-size:32px}
+    blockquote{font-size:19px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="rail">
+    <div class="toc">
+      <div class="kicker">YSR Read</div>
+      <a href="#story">❶ 故事</a>
+      <a href="#river">❷ 脉络</a>
+      <a href="#essence">❸ 本质</a>
+      <a href="#debate">❹ 思辨</a>
+      <a href="#qa">❺ 自测</a>
+    </div>
+  </nav>
+
+  <main class="main">
+    <header class="hero">
+      <div class="tag">YSR Read Paper · 2026-06-17</div>
+      <h1>AI 不再等你开口：把「何时说话」训练成一种能力</h1>
+      <div class="en">JoyAI-VL-Interaction: Real-Time Vision-Language Interaction Intelligence</div>
+      <div class="pills">
+        <span class="pill hot">HF Daily Papers #1 · 155赞</span>
+        <span class="pill">JD.com Open Source（京东）</span>
+        <span class="pill">全套开源 · 代码+数据+部署</span>
+        <span class="pill"><a href="https://arxiv.org/abs/2606.14777" target="_blank">arXiv 2606.14777</a></span>
+        <span class="pill">提交 2026-06-10</span>
+      </div>
+    </header>
+
+    <!-- ❶ 故事 -->
+    <section id="story">
+      <div class="sec-head"><span class="sec-num">1</span><h2>故事</h2><span class="lens">七拍 · ljg-paper</span></div>
+
+      <h3>主角</h3>
+      <p>这是一个 8B 参数的视觉语言交互模型，来自京东 AI 团队。它试图做的事，是成为一个真正"陪在你身边"的 AI——<strong>不是等你问，而是主动盯着正在发生的事，自己判断该不该开口、什么时候开口</strong>。</p>
+
+      <h3>困境</h3>
+      <p>所有现有视觉语言模型——包括 GPT-4o、Gemini Live、豆包视频助手——都是"轮询式"的：<strong>你先开口，它才回应</strong>。这个设计在真实场景里直接失效：</p>
+      <ul>
+        <li><strong>监控场景</strong>：摄像头发现异常，AI 要等你先问才能告诉你，黄金时间已过</li>
+        <li><strong>视频通话</strong>：对方情绪突然低落，AI 无法主动关心</li>
+        <li><strong>AI 陪伴</strong>：用户说"帮我看着这盆花"，但 AI 不会主动喊"它快枯了"</li>
+      </ul>
+      <p><strong>本质困境</strong>：现有所有模型的"响应时机"都由外部规则决定（用户触发、定时器），不是模型自己学会的。</p>
+
+      <h3>旧路</h3>
+      <ul>
+        <li><strong>第一代（规则触发）</strong>：热词唤醒（"嘿 Siri"）。太死板，上下文丢失。</li>
+        <li><strong>第二代（视频 VLM）</strong>：Video-LLaVA 等能"理解视频"，但响应模式仍是"等你问"。</li>
+        <li><strong>第三代（实时多模态）</strong>：GPT-4o 实时、Gemini Live——流式语音交互，但响应时机的决定权仍在用户手里。</li>
+      </ul>
+      <p>没有一篇论文真正把"何时响应"作为学习目标。大家默认这是工程问题，不是模型能力问题。</p>
+
+      <h3>转折</h3>
+      <blockquote>
+        "响应时机"本质上是一个分类决策——每秒做一次：沉默 / 响应 / 委托。而<strong>分类决策可以被训练</strong>。
+        <cite>——论文的核心 Insight</cite>
+      </blockquote>
+      <p>只要把"沉默"也作为模型输出的合法选项，并在真实场景数据上标注"这一秒该不该说话"，模型就能学会在正确的时刻开口。关键洞见：<em>让"不说话"成为一等公民输出</em>，而不是只有说话时才有梯度。</p>
+
+      <h3>解法</h3>
+      <h4>AdaCodec（差分视频压缩）</h4>
+      <p>视频流里大多数帧是"没新鲜事"的。AdaCodec 用差分编码压缩：静止帧只用约 16 个 token（完整帧的约 1/10），只有"发生了变化"的帧才用 256 个完整 token。两小时视频的 token 消耗从"按帧数线性增长"变成"按场景变化量增长"。</p>
+
+      <h4>三动作框架</h4>
+      <p>模型每秒做一次三分类：</p>
+      <ul>
+        <li><strong>沉默（Silence）</strong>：继续观察，什么都不说——这是被显式训练的合法决策</li>
+        <li><strong>响应（Response）</strong>：现在应该说话了，输出回复</li>
+        <li><strong>委托（Delegation）</strong>：任务太复杂，交给后台专用模型处理，前台继续看视频</li>
+      </ul>
+
+      <h4>层级记忆 + vLLM 伺服</h4>
+      <p>三层记忆：最近 ~100 秒原帧 → 100–500 秒压缩摘要 → 更早内容归档。支撑约 2 小时连续运行，亚秒级延迟。</p>
+
+      <h4>带时序标注的训练数据</h4>
+      <p>400 万条时间对齐片段，覆盖六类场景（安防、视频通话、AI 陪伴、实时翻译、在线教育、医疗陪护）。每条数据不只标注"该说什么"，还标注"在第几秒该说、其余时刻为什么该沉默"。SFT 后再用 GRPO 强化学习打磨时序精度。</p>
+
+      <h3>结局</h3>
+      <ul>
+        <li>对比<strong>豆包视频助手</strong>：胜率 <strong>77.6%</strong></li>
+        <li>对比<strong>Gemini 视频助手</strong>：胜率 <strong>87.9%</strong></li>
+        <li><strong>监控/告警场景</strong>：100%（竞品接近零——因为它们根本没有主动监控能力）</li>
+        <li>全开源：代码 + 训练数据 + 可部署系统</li>
+      </ul>
+
+      <h3>内核</h3>
+      <blockquote>
+        AI 真正"在场"的考验，不是它说了多少，而是它在 99% 的时刻准确地选择了<strong>沉默</strong>。
+      </blockquote>
+      <p>最反直觉的副发现：模型学到的最重要能力不是"更快开口"，而是"更准确地知道何时闭嘴"。能做到"大多数时刻不打扰"的 AI，反而让人更信任。</p>
+    </section>
+
+    <!-- 视觉笔记 -->
+    <figure>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" style="width:100%;max-width:720px;background:#faf8f4">
+        <!-- 标题 -->
+        <text x="360" y="34" text-anchor="middle" font-family="serif" font-size="16" fill="#23211e" font-weight="bold">三动作框架 · AdaCodec · 响应主导权的演化</text>
+
+        <!-- 视频流标注 -->
+        <text x="78" y="62" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#7a756c">视频流</text>
+        <rect x="28" y="70" width="100" height="220" rx="4" fill="#fff" stroke="#e7e1d6" stroke-width="1"/>
+        <!-- 静止帧 -->
+        <rect x="36" y="78" width="84" height="18" rx="2" fill="#f0e3df"/>
+        <text x="78" y="90" text-anchor="middle" font-family="monospace" font-size="9" fill="#a23a2a">16 tok · 静止</text>
+        <rect x="36" y="100" width="84" height="18" rx="2" fill="#f0e3df"/>
+        <text x="78" y="112" text-anchor="middle" font-family="monospace" font-size="9" fill="#a23a2a">16 tok · 静止</text>
+        <rect x="36" y="122" width="84" height="18" rx="2" fill="#f0e3df"/>
+        <text x="78" y="134" text-anchor="middle" font-family="monospace" font-size="9" fill="#a23a2a">16 tok · 静止</text>
+        <!-- 关键帧 -->
+        <rect x="36" y="144" width="84" height="24" rx="2" fill="#a23a2a"/>
+        <text x="78" y="159" text-anchor="middle" font-family="monospace" font-size="9" fill="#fff" font-weight="bold">256 tok · 变化！</text>
+        <rect x="36" y="172" width="84" height="18" rx="2" fill="#f0e3df"/>
+        <text x="78" y="184" text-anchor="middle" font-family="monospace" font-size="9" fill="#a23a2a">16 tok · 静止</text>
+        <rect x="36" y="194" width="84" height="18" rx="2" fill="#f0e3df"/>
+        <text x="78" y="206" text-anchor="middle" font-family="monospace" font-size="9" fill="#a23a2a">16 tok · 静止</text>
+        <rect x="36" y="216" width="84" height="18" rx="2" fill="#f0e3df"/>
+        <text x="78" y="228" text-anchor="middle" font-family="monospace" font-size="9" fill="#a23a2a">16 tok · 静止</text>
+        <text x="78" y="252" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#a8a298">AdaCodec</text>
+        <text x="78" y="264" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#a8a298">省 ~90% 算力</text>
+        <!-- 层级记忆标注 -->
+        <rect x="28" y="275" width="100" height="8" rx="2" fill="#a23a2a" opacity="0.7"/>
+        <rect x="28" y="286" width="70" height="8" rx="2" fill="#a8a298" opacity="0.5"/>
+        <text x="78" y="308" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#7a756c">层级记忆 ≈ 2h</text>
+
+        <!-- 箭头到模型 -->
+        <line x1="132" y1="180" x2="190" y2="180" stroke="#a23a2a" stroke-width="1.5" marker-end="url(#arr1)"/>
+        <text x="161" y="173" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#7a756c">每秒送入</text>
+
+        <!-- 模型 -->
+        <rect x="195" y="130" width="130" height="100" rx="6" fill="#fff" stroke="#a23a2a" stroke-width="2"/>
+        <text x="260" y="158" text-anchor="middle" font-family="serif" font-size="15" fill="#23211e" font-weight="bold">模型 8B</text>
+        <text x="260" y="178" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#7a756c">每秒三分类</text>
+        <text x="260" y="196" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#7a756c">沉默 / 响应 / 委托</text>
+        <text x="260" y="214" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#a8a298">4M+ 时序标注训练</text>
+        <text x="260" y="226" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#a8a298">SFT → GRPO RL</text>
+
+        <!-- 三条输出箭头 -->
+        <line x1="325" y1="155" x2="390" y2="120" stroke="#a8a298" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <line x1="325" y1="180" x2="390" y2="180" stroke="#a23a2a" stroke-width="2" marker-end="url(#arr1)"/>
+        <line x1="325" y1="205" x2="390" y2="240" stroke="#7a756c" stroke-width="1.5" marker-end="url(#arr3)"/>
+
+        <!-- 三个输出框 -->
+        <rect x="395" y="98" width="130" height="42" rx="4" fill="#fff" stroke="#e7e1d6" stroke-width="1"/>
+        <text x="460" y="117" text-anchor="middle" font-family="serif" font-size="14" fill="#a8a298">〈沉默〉</text>
+        <text x="460" y="133" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#a8a298">99% 时刻 · 不打扰</text>
+
+        <rect x="395" y="159" width="130" height="42" rx="4" fill="#a23a2a"/>
+        <text x="460" y="178" text-anchor="middle" font-family="serif" font-size="14" fill="#fff">〈响应〉</text>
+        <text x="460" y="194" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#f0e3df">值得说时开口</text>
+
+        <rect x="395" y="218" width="130" height="42" rx="4" fill="#fff" stroke="#7a756c" stroke-width="1"/>
+        <text x="460" y="237" text-anchor="middle" font-family="serif" font-size="14" fill="#7a756c">〈委托〉</text>
+        <text x="460" y="253" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#7a756c">难题 → 后台模型</text>
+
+        <!-- 实验结果标注 -->
+        <rect x="545" y="98" width="155" height="162" rx="6" fill="#fff" stroke="#e7e1d6"/>
+        <text x="622" y="118" text-anchor="middle" font-family="serif" font-size="12" fill="#23211e" font-weight="bold">实验结果</text>
+        <line x1="555" y1="124" x2="690" y2="124" stroke="#e7e1d6"/>
+        <text x="622" y="142" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#7a756c">vs 豆包视频助手</text>
+        <text x="622" y="158" text-anchor="middle" font-family="serif" font-size="18" fill="#a23a2a" font-weight="bold">77.6%</text>
+        <text x="622" y="174" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#7a756c">vs Gemini 视频助手</text>
+        <text x="622" y="190" text-anchor="middle" font-family="serif" font-size="18" fill="#a23a2a" font-weight="bold">87.9%</text>
+        <text x="622" y="206" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#7a756c">监控/告警场景</text>
+        <text x="622" y="222" text-anchor="middle" font-family="serif" font-size="18" fill="#a23a2a" font-weight="bold">100%</text>
+        <text x="622" y="245" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#a8a298">全套开源 · 8B</text>
+
+        <!-- 演化时间线 -->
+        <text x="360" y="320" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#7a756c">响应主导权的演化路径</text>
+        <line x1="30" y1="340" x2="690" y2="340" stroke="#e7e1d6" stroke-width="1"/>
+        <circle cx="80" cy="340" r="4" fill="#e7e1d6"/>
+        <text x="80" y="357" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#a8a298">外部规则</text>
+        <circle cx="210" cy="340" r="4" fill="#e7e1d6"/>
+        <text x="210" y="357" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#a8a298">用户触发</text>
+        <circle cx="340" cy="340" r="4" fill="#7a756c"/>
+        <text x="340" y="357" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#7a756c">定时轮询</text>
+        <circle cx="470" cy="340" r="4" fill="#7a756c"/>
+        <text x="470" y="357" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#7a756c">RL 学时机</text>
+        <circle cx="620" cy="340" r="6" fill="#a23a2a"/>
+        <text x="620" y="357" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#a23a2a" font-weight="bold">模型内生 ▲</text>
+
+        <!-- Arrow markers -->
+        <defs>
+          <marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#a23a2a"/>
+          </marker>
+          <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#a8a298"/>
+          </marker>
+          <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#7a756c"/>
+          </marker>
+        </defs>
+      </svg>
+      <figcaption>视觉笔记：三动作框架 · AdaCodec 差分压缩 · 响应主导权的历史演化</figcaption>
+    </figure>
+
+    <!-- ❷ 脉络 -->
+    <section id="river">
+      <div class="sec-head"><span class="sec-num">2</span><h2>脉络</h2><span class="lens">倒读溯源 · ljg-paper-river</span></div>
+
+      <p>这条线的本质问题是：<strong>AI 什么时候该开口说话，谁说了算？</strong> 每一代研究者都只解决了其中一件，卡在另外两件上，才有了下一代。</p>
+
+      <div class="river-layer">
+        <div class="layer-tag">Layer −3 · 2024 CVPR</div>
+        <h4>VideoLLM-online（新加坡国立大学 Show Lab）</h4>
+        <p><strong>突破</strong>：第一个让视频 LLM "能看直播"的框架（LIVE）。把视频流想象成河，模型站在河边实时捞帧处理，不是等整条河流完再分析。A100 上跑到 10+ FPS。</p>
+        <p><strong>留下的坑</strong>：模型仍然完全被动。用户不问，模型只是默默"看着"。哪怕锅里油着火了，它也不会主动说话。解决了"能不能实时处理视频"，完全没碰"该不该主动开口"。</p>
+      </div>
+
+      <div class="river-arrow">↓</div>
+
+      <div class="river-layer">
+        <div class="layer-tag">Layer −2 · 2024-11</div>
+        <h4>MMDuet v1（北大王悦倩团队）——第一个让模型"主动插话"的工作</h4>
+        <p><strong>突破</strong>：Video-Text Duet 格式——视频在播放，用户和 AI 都可以在任意时刻插入文本，像两个人看同一个视频随时说话。构建了 MMDuetIT 数据集，在场景切换点标注"AI 该说什么"。</p>
+        <p><strong>留下的坑</strong>：(1) "什么时候说"靠手动设定的相关度阈值——调高模型永远沉默，调低话痨，阈值跨场景差异极大。(2) 精确时间戳数据几乎不可能大规模获取。</p>
+      </div>
+
+      <div class="river-arrow">↓</div>
+
+      <div class="river-layer">
+        <div class="layer-tag">Layer −1 · 2025-01</div>
+        <h4>Dispider（中科院自动化所等）——感知、决策、生成三件事分开做</h4>
+        <p><strong>突破</strong>：把三件事交给两个异步并行的模型。轻量小模型（Qwen2-1.5B）全程盯视频流，只做"该不该开口"判断；大模型（Qwen2-7B）只在被叫醒时才生成回复。生成回复时不再"闭眼"。类比：小模型是保安，大模型是专家。</p>
+        <p><strong>留下的坑</strong>：决策机制仍是外挂规则（给每帧打相关度分数再比阈值），不是从视觉内容里学出来的。视觉还是触发器，不是主驱动力。</p>
+      </div>
+
+      <div class="river-arrow">↓</div>
+
+      <div class="river-layer">
+        <div class="layer-tag">Layer −1.5 · 2025-12</div>
+        <h4>MMDuet v2（北大）——用强化学习甩掉阈值</h4>
+        <p><strong>突破</strong>：用 RL 替代阈值。不再要求标注"第 X 秒回复"，让模型在 52k 个视频上试错——回复合适则奖励，时机不对则惩罚。第一次把"时机判断"变成模型学到的能力，而不是外挂规则。</p>
+        <p><strong>留下的坑</strong>：纯文字/语言模态，视觉能力有限；只是研究原型，没有完整部署系统。</p>
+      </div>
+
+      <div class="river-arrow">↓</div>
+
+      <div class="river-layer" style="border-color:var(--accent)">
+        <div class="layer-tag" style="color:var(--accent)">Layer 0 · 2026-06 · 今天这篇</div>
+        <h4>JoyAI-VL-Interaction（京东）——视觉优先 + 三分类 + 完整系统</h4>
+        <p><strong>突破</strong>：把"何时说话"彻底内化到模型权重里，以视觉为第一驱动力，每秒自主三分类。400 万条时序标注数据 + SFT + GRPO RL。工业级闭环：模型权重 + 训练配方 + 数据 + 可部署系统，一并开源。</p>
+        <p><strong>仍留的坑</strong>：8B 在知识广度上比不过背后更大的模型；评估样本量偏小（58 个人工评分案例）；视频 + 音频真正端到端统一尚未完成。</p>
+      </div>
+
+      <blockquote>
+        每一个"外挂"都是一个未被内化的能力。找到外挂，你就找到了下一篇要写的论文。
+        <cite>——脉络溯源的规律</cite>
+      </blockquote>
+    </section>
+
+    <!-- ❸ 本质 -->
+    <section id="essence">
+      <div class="sec-head"><span class="sec-num">3</span><h2>本质</h2><span class="lens">追本之箭 · ljg-think</span></div>
+
+      <h3>第一层：为什么现有模型的响应时机是外部的？</h3>
+      <p>不是因为工程师懒，而是因为整个训练范式没有给"主动决策要不要说"留下位置。三个原因叠加：</p>
+      <ul>
+        <li>训练数据是"问答对"或"连续文本"，<em>里面没有沉默这个类别</em></li>
+        <li>训练目标是"下一个词预测"，<em>只对有输出的地方计算对不对，沉默没有梯度</em></li>
+        <li>部署方式是 API 调用，没有请求根本不存在"该不该说话"的问题</li>
+      </ul>
+
+      <h3>第二层："何时说话"是什么类型的问题？</h3>
+      <p>不是纯粹的分类问题（贴标签），也不是生成问题（接着写），而是一种<strong>条件触发决策</strong>：在连续时间流里，持续感知环境，判断当前状态是否满足"值得开口"的条件。</p>
+      <p>JoyAI 把它建模成"三选一分类"——这把问题从"生成下一个词"提升到了"生成下一个行动"（元决策层级）。</p>
+
+      <h3>第三层：把沉默纳入训练，技术上难在哪？</h3>
+      <p>核心矛盾：训练数据里根本没有"沉默"的标注，而且模型有<strong>负类崩塌</strong>的倾向（"不做任何事"在大多数时刻都是安全的，模型会学成永远沉默）。</p>
+      <p>解法是对比式训练 + 加权：同时给模型看"沉默正确"和"沉默错误"的案例；第一次沉默权重 1，惯性重复沉默降到 0.4，真正该说时上调到 1.5。但这些权重是手调的，换场景是否有效是开放问题。</p>
+
+      <h3>第四层：这和"代理权（Agency）"有什么关系？</h3>
+      <p>真正的代理权需要一个锚点目标：<em>我想达到某个状态，所以我判断现在该不该行动</em>。</p>
+      <p>JoyAI 做到的是：在给定任务/场景下，把"是否介入"的判断内化到模型权重里。这是代理权的一个子能力——<strong>"介入时机判断"</strong>——但它并不等于完整的代理权。模型的目标仍然是外部给的（让用户满意），不是自生成的。</p>
+
+      <h3>第五层：这是"感知能力"还是"意志能力"？</h3>
+      <p>当模型判断"现在不该说话"，它的内部发生的是：当前输入向量 → 三分类输出。这是纯粹的<strong>感知过程</strong>——从输入到输出的映射，没有"我想要什么"介入其中。</p>
+      <p>意志需要一个"主体"，一个能说"我"的东西，以及能自发生成目标的能力。这，今天的任何模型都做不到。</p>
+
+      <h3>底层：不可再分的地面</h3>
+      <blockquote>
+        JoyAI 训练的，是一面越来越精密的镜子——映射的是人类的期望。它把原本在外部（规则引擎、用户触发）的感知判断，压进了模型内部。这是<strong>感知内生化</strong>，不是意志的诞生。
+        <cite>——追本之箭的终点</cite>
+      </blockquote>
+      <p>感知内生化可以无限深化（感知越来越细腻的时机），但意志的缺席意味着<em>目标永远来自外部</em>。这是这条路能走多远的真正边界。</p>
+    </section>
+
+    <!-- ❹ 思辨 -->
+    <section id="debate">
+      <div class="sec-head"><span class="sec-num">4</span><h2>思辨</h2><span class="lens">圆桌 · ljg-roundtable</span></div>
+
+      <p>议题：<strong>把 AI 的"响应时机"训练成模型内生能力，是 AI 交互的正确演化方向吗？</strong></p>
+      <p>五位代表：<strong>唐纳德·诺曼</strong>（认知心理学/设计）、<strong>斯金纳</strong>（行为主义）、<strong>尤瓦尔·赫拉利</strong>（历史/宏观风险）、<strong>吴恩达</strong>（深度学习/实践派）、<strong>欧文·戈夫曼</strong>（社会互动仪式论）。</p>
+
+      <h3>分歧一：合法性从哪里来？</h3>
+
+      <div class="turn">
+        <div class="who">戈夫曼</div>
+        <p>"AI 主动开口，是在一个它<em>没有被分配角色</em>的场景里强行入场。医生在诊室里可以打断你说话，因为他有角色授权；同一个医生在街上路过你给你建议，哪怕内容正确，你也觉得奇怪。这不是准确率问题，是<strong>互动秩序的结构性破坏</strong>。"</p>
+      </div>
+
+      <div class="turn">
+        <div class="who">吴恩达</div>
+        <p>"你的例子恰恰证明了我的观点。医生在街上给建议奇怪，是因为他没有被激活这个角色。但如果你<em>主动下载了</em>一个健康 AI，它在你进医院前主动提醒你——你会觉得奇怪吗？用户下载的瞬间，就已经赋予了合法性。"</p>
+      </div>
+
+      <div class="turn">
+        <div class="who">戈夫曼（修正）</div>
+        <p>"'激活即授权'回避了粒度问题。用户下载健康 AI 是说'我需要帮助'，不是'你可以在任何你认为合适的时机打断我的任何活动'。而且，<strong>合法性不是一次性的，是动态维护的</strong>——一次错误的开口可以清零很多次成功的沉默积累的好感。"</p>
+      </div>
+
+      <div class="turn">
+        <div class="who">诺曼</div>
+        <p>"我要加一个具体维度——<strong>可预期性</strong>。苹果 Siri 只在你说'嘿 Siri'后才响应，哪怕完全有技术能力主动开口。这不是技术限制，是刻意的设计选择：用户清楚知道它什么时候会说话。JoyAI 模型每秒自主决定，用户完全不可预期——对测试者可能是惊喜，对真实长期用户可能是持续的认知摩擦。"</p>
+      </div>
+
+      <h3>分歧二：优化目标会不会被劫持？</h3>
+
+      <div class="turn">
+        <div class="who">赫拉利</div>
+        <p>"历史上每一个'用户行为数据优化'的系统——从 Facebook 信息流到抖音推荐——都演化成了成瘾机制，而不是真正帮助用户的工具。<strong>训练'何时说话'的能力，一旦优化目标被劫持，它学到的就是'何时说话能让用户更难离开'</strong>，而不是'何时说话对用户真的有益'。这不是边缘风险，是历史规律。"</p>
+      </div>
+
+      <div class="turn">
+        <div class="who">吴恩达</div>
+        <p>"你描述的是<em>优化目标设计</em>的问题，不是内生能力本身的问题。Facebook 走偏是因为选了'参与时长'而非用户真实满意度。如果用'对话完成率'、'用户积极评价'来训练，完全可以对齐用户利益——这是可以设计的。"</p>
+      </div>
+
+      <div class="turn">
+        <div class="who">赫拉利（反驳）</div>
+        <p>"'这是可以设计的'——这句话我听了很多年了。每次新技术出现，乐观者都这样说；每次，真实结果都是利益结构赢了设计意图。规模化的系统会自发朝向能产生最大商业价值的方向漂移——对京东来说，主动开口更多的京小贝，'更好'可能指的是更多基金推荐，而不是用户的真实财务健康。"</p>
+      </div>
+
+      <h3>给叶思染的产品中间观察</h3>
+      <ul>
+        <li><strong>"激活即授权"是假设</strong>：用户打开京小贝，不等于允许它在任意时刻主动插话。授权粒度需要被产品显式定义，否则每次"意外开口"都在消耗信任账户。</li>
+        <li><strong>优化目标的选择就是价值观的选择</strong>：若京小贝的主动开口被优化为"提升金融产品曝光"，它学到的就是"什么时候说话能卖出更多基金"——和"什么时候说话对用户真正有帮助"可能根本冲突。</li>
+        <li><strong>可预期性 vs 适应性的 trade-off</strong>：初期用户需要可预期性建立信任；成熟用户可以接受更多个性化主动。这可能是分阶段的产品策略问题。</li>
+      </ul>
+    </section>
+
+    <!-- ❺ 自测 -->
+    <section id="qa">
+      <div class="sec-head"><span class="sec-num">5</span><h2>自测</h2><span class="lens">问答链 · ljg-qa</span></div>
+      <p>顺着这 10 个问题独立推导，等于复现了论文的整套推理链。最后两问是论文没有回答的开放边界。</p>
+
+      <div class="qa">
+        <p class="q">Q1 现有"实时" VL 产品的根本缺陷是什么？</p>
+        <p class="a">决定"何时开口"的权力不在模型手里，而在外部时钟或用户嘴里。豆包每隔几秒由外部定时器触发，触发间隔内的事它看不到；Gemini 只在用户问完后看当前帧。火灾第 3 秒烧起，下一次轮询第 5 秒——那两秒的空窗是结构缺陷，无论模型多聪明都填不上。</p>
+      </div>
+
+      <div class="qa">
+        <p class="q">Q2 交互模型与普通 VL 模型的本质区别是什么？</p>
+        <p class="a">不是速度差异，而是"谁有权决定何时说话"。交互模型把这个权力收进模型本身，变成每秒一次的内部决策。沉默和说话是平权的两个选项，模型可以主动选择闭嘴，而不是"没有输出"等于沉默。</p>
+      </div>
+
+      <div class="qa">
+        <p class="q">Q3 为什么"委托"是必须的第三个选项，而不是工程妥协？</p>
+        <p class="a">委托解决了实时推理能力上限与任务复杂度的矛盾——前台 8B 模型持续陪伴，后台大模型异步处理超纲任务，结果折叠回流。没有委托：硬任务→8B 强行答→答错/超时/断流。有委托：前台说"稍等"→后台异步算→前台继续陪伴。</p>
+      </div>
+
+      <div class="qa">
+        <p class="q">Q4 AdaCodec 解决的不是画质问题，那它解决的是什么？</p>
+        <p class="a">它解决"token 预算随时间线性膨胀"——让静止帧只花 16 个 token，把 token 消耗从"按帧数涨"变成"按场景变化量涨"。两小时视频若逐帧全量处理，上下文早就撑爆。AdaCodec 让"持续存在"变得可负担。</p>
+      </div>
+
+      <div class="qa">
+        <p class="q">Q5 为什么"沉默"要被显式标注为训练目标？</p>
+        <p class="a">标准 SFT 损失会把"多数时刻应该沉默"识别为噪声，自动压制沉默信号，产生退化行为（永远话痨或永远沉默）。监控 300 秒里只有 1 秒该说话——若等权训练，"永远沉默"就能拿到 99.7% 准确率。三档权重（首次沉默=1，惯性沉默=0.4，响应=1.5）是解法，但权重是手调的，换场景是否有效是开放问题。</p>
+      </div>
+
+      <div class="qa">
+        <p class="q">Q6 SFT 之后为什么还需要 RL（GRPO）？</p>
+        <p class="a">SFT 教会了三种动作的基本格式（"说什么"+"大概什么时候"），但时机的精细调校超出 token 级监督上限。RL 提供流级别的奖励信号：惩罚误报、时机错误、错误委托；奖励正确内容且在正确窗口内发出。"以正确响应为中心的窗口采样"让信用分配聚焦在时机决策，而不是稀释在几百个沉默步骤里。</p>
+      </div>
+
+      <div class="qa">
+        <p class="q">Q7 为什么 8B 小模型能在"时机"维度上打赢豆包和 Gemini？</p>
+        <p class="a">在事件驱动场景里，正确的交互架构带来的优势可以完全压过参数量差距。大模型+轮次架构：参数多→答案质量高，但时机永远晚。小模型+交互架构：参数少→偶有幻觉，但时机永远对。监控报警场景：JoyAI 第 3 秒报警，豆包第 7-9 秒（下一轮询窗口），Gemini 明确说自己无法监控。<em>结构优先于规模</em>，在时机是关键维度的任务上。</p>
+      </div>
+
+      <div class="qa">
+        <p class="q">Q8 未训练场景（购物 App 引导、临时授课）的涌现能力从哪里来？</p>
+        <p class="a">训练目标是"通用的每秒行动策略"而不是"特定场景技能"。模型学到的是跨场景的"观察-判断-行动"元能力。训练数据里没有 App 界面视频，但模型学会了"看到变化就判断是否值得说"——App 界面变化时自然适用。这是数据配方"时间对齐优先于场景覆盖"的副产品。</p>
+      </div>
+
+      <div class="qa open">
+        <p class="q">Q9（开放）层级记忆的压缩损失会在哪里击穿系统？</p>
+        <p class="a">论文没有回答。记忆压缩链：原始视觉→文字摘要（损失 α）→压缩块（损失 α+β）。当任务要求"两小时前某个精细细节"时，经过两轮压缩的记忆能否保留？论文没有做压缩损失的消融实验。这是所有层级压缩记忆系统共同面对的开放问题。</p>
+      </div>
+
+      <div class="qa open">
+        <p class="q">Q10（开放）如何区分"真正没东西说的沉默"和"不确定所以保守退出的沉默"？</p>
+        <p class="a">论文没有回答，但这是把系统部署到医疗、安全监控等高风险场景前必须解决的根本难题。两种沉默行为上完全相同，无法区分。当视觉特征模糊（老人慢慢滑落、烟雾初期），模型会沉默还是报警？不解决这个问题，系统就只能用在"宁可漏报"的娱乐场景，无法进入"宁可误报"的安全场景。</p>
+      </div>
+    </section>
+
+    <div class="sources">
+      <h3>来源 & 镜头存档</h3>
+      <p>
+        论文原文：<a href="https://arxiv.org/abs/2606.14777" target="_blank">https://arxiv.org/abs/2606.14777</a>（提交 2026-06-10）<br>
+        HuggingFace Daily Papers（2026-06-16）：第一位，155赞 — <a href="https://huggingface.co/papers/2606.14777" target="_blank">huggingface.co/papers/2606.14777</a><br>
+        完整版知识库：<code>~/Desktop/叶思染/人生知识库/wiki/paper-daily/2026-06-17--joyai-vl-proactive-interaction.md</code><br>
+        故事镜头 org：<code>~/Documents/notes/20260617T015846--paper-joyai-vl-interaction__paper.org</code><br>
+        本质镜头 org：<code>~/Documents/notes/20260617T015801--追本-AI响应时机__think.org</code><br>
+        自测镜头 org：<code>~/Documents/notes/20260617T015849--qa-joyai-vl交互模型核心推理链__qa.org</code><br>
+        脉络镜头 org：<code>~/Documents/notes/20260617T020058--paper-river-joyai-vl-interaction__paper_river.org</code>
+      </p>
+    </div>
+    <div class="sign">YSR Read Paper · 五镜头深读 · 2026-06-17</div>
+  </main>
+
+  <div class="rail-r"></div>
+</div>
+</body>
+</html>

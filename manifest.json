@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-17",
+    "title": "AI 不再等你开口：把「何时说话」训练成一种能力",
+    "paper": "JoyAI-VL-Interaction: Real-Time Vision-Language Interaction Intelligence"
+  },
+  {
     "date": "2026-06-16",
     "title": "记忆不是翻出来的，是想出来的",
     "paper": "Memory is Reconstructed, Not Retrieved: Graph Memory for LLM Agents"
