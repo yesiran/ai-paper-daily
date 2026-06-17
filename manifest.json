@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-18",
+    "title": "多想一遍开窍，再想就魔怔",
+    "paper": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling"
+  },
+  {
     "date": "2026-06-17",
     "title": "AI 不再等你开口：把「何时说话」训练成一种能力",
     "paper": "JoyAI-VL-Interaction: Real-Time Vision-Language Interaction Intelligence"
