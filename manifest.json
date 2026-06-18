@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-19",
+    "title": "画得像，不如记得住：世界模型转正为物理智能的操作系统",
+    "paper": "Kairos: A Native World Model Stack for Physical AI"
+  },
+  {
     "date": "2026-06-18",
     "title": "多想一遍开窍，再想就魔怔",
     "paper": "LoopCoder-v2: Only Loop Once for Efficient Test-Time Computation Scaling"
