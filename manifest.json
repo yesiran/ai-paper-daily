@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-21",
+    "title": "先改话，话改尽了才动骨",
+    "paper": "Fully Autonomous Prompt Optimization of Multi-Step LLM Pipelines (FAPO)"
+  },
+  {
     "date": "2026-06-20",
     "title": "看不准，就派人去取证",
     "paper": "S-Agent: Spatial Tool-Use Elicits Reasoning for Spatial Intelligence"
