@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-22",
+    "title": "尺子歪了，怎么量都缩",
+    "paper": "Rethinking Shrinkage Bias in LLM FP4 Pretraining: Geometric Origin, Systemic Impact, and UFP4 Recipe"
+  },
+  {
     "date": "2026-06-21",
     "title": "先改话，话改尽了才动骨",
     "paper": "Fully Autonomous Prompt Optimization of Multi-Step LLM Pipelines (FAPO)"
