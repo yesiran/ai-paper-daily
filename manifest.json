@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-25",
+    "title": "看一个数字喂饭，太瞎：把预训练数据配方从死配方变成训练中实时掌舵",
+    "paper": "Holistic Data Scheduler for LLM Pre-training via Multi-Objective Reinforcement Learning"
+  },
+  {
     "date": "2026-06-24",
     "title": "眼盯原书，手记当下：把输出端的「小抄」钉成常数",
     "paper": "Unlimited OCR Works: Welcome the Era of One-shot Long-horizon Parsing"
