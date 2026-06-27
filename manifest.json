@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-28",
+    "title": "草稿多猜没用，得猜得彼此自洽：投机解码的天花板被捅破",
+    "paper": "JetSpec: Breaking the Scaling Ceiling of Speculative Decoding with Parallel Tree Drafting"
+  },
+  {
     "date": "2026-06-27",
     "title": "改卷比答题难——验证是一条永远后退的地平线",
     "paper": "The Verification Horizon: No Silver Bullet for Coding Agent Rewards"
