@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-29",
+    "title": "答得对，却说不出口：工具智能体被 RL 训崩，崩的不是脑子是嘴",
+    "paper": "Why Multi-Step Tool-Use Reinforcement Learning Collapses and How Supervisory Signals Fix It"
+  },
+  {
     "date": "2026-06-28",
     "title": "草稿多猜没用，得猜得彼此自洽：投机解码的天花板被捅破",
     "paper": "JetSpec: Breaking the Scaling Ceiling of Speculative Decoding with Parallel Tree Drafting"
