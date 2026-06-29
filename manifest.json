@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-06-30",
+    "title": "默想一圈，没装新东西",
+    "paper": "Formalizing Latent Thoughts: Four Axioms of Thought Representation in LLMs"
+  },
+  {
     "date": "2026-06-29",
     "title": "答得对，却说不出口：工具智能体被 RL 训崩，崩的不是脑子是嘴",
     "paper": "Why Multi-Step Tool-Use Reinforcement Learning Collapses and How Supervisory Signals Fix It"
