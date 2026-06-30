@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-01",
+    "title": "上限不在背多少，在走多稳：35B 追平万亿大模型",
+    "paper": "Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent (Agents-A1)"
+  },
+  {
     "date": "2026-06-30",
     "title": "默想一圈，没装新东西",
     "paper": "Formalizing Latent Thoughts: Four Axioms of Thought Representation in LLMs"
