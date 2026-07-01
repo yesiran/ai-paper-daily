@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-02",
+    "title": "让模型不只答对，还知道自己有没有把握",
+    "paper": "Reinforcement Learning with Metacognitive Feedback Elicits Faithful Uncertainty Expression in LLMs"
+  },
+  {
     "date": "2026-07-01",
     "title": "上限不在背多少，在走多稳：35B 追平万亿大模型",
     "paper": "Scaling the Horizon, Not the Parameters: Reaching Trillion-Parameter Performance with a 35B Agent (Agents-A1)"
