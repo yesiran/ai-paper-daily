@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-03",
+    "title": "猜世界,不猜下一个词",
+    "paper": "Orca: The World is in Your Mind"
+  },
+  {
     "date": "2026-07-02",
     "title": "让模型不只答对，还知道自己有没有把握",
     "paper": "Reinforcement Learning with Metacognitive Feedback Elicits Faithful Uncertainty Expression in LLMs"
