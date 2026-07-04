@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-04",
+    "title": "一言铸一器：提示词第一次有了编译器",
+    "paper": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions"
+  },
+  {
     "date": "2026-07-03",
     "title": "猜世界,不猜下一个词",
     "paper": "Orca: The World is in Your Mind"
