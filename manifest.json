@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-06",
+    "title": "记忆不是零件，是练出来的手艺",
+    "paper": "AutoMem: Automated Learning of Memory as a Cognitive Skill"
+  },
+  {
     "date": "2026-07-04",
     "title": "一言铸一器：提示词第一次有了编译器",
     "paper": "Program-as-Weights: A Programming Paradigm for Fuzzy Functions"
