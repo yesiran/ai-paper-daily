@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-07",
+    "title": "你训的模型，不是你部署的模型——训练曲线的海市蜃楼",
+    "paper": "The Mirage of Optimizing Training Policies: Monotonic Inference Policies as the Real Objective for LLM Reinforcement Learning"
+  },
+  {
     "date": "2026-07-06",
     "title": "记忆不是零件，是练出来的手艺",
     "paper": "AutoMem: Automated Learning of Memory as a Cognitive Skill"
