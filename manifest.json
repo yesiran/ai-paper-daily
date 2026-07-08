@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-08",
+    "title": "范式之争的终局不是谁赢，是合体",
+    "paper": "Nemotron-Labs-Diffusion: A Tri-Mode Language Model Unifying Autoregressive, Diffusion, and Self-Speculation Decoding"
+  },
+  {
     "date": "2026-07-07",
     "title": "你训的模型，不是你部署的模型——训练曲线的海市蜃楼",
     "paper": "The Mirage of Optimizing Training Policies: Monotonic Inference Policies as the Real Objective for LLM Reinforcement Learning"
