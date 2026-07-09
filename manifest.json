@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-10",
+    "title": "记得多，动得少：稀疏寻址让线性模型的记忆涨约 3600 倍而每字算力不变",
+    "paper": "Sparse Delta Memory: Scaling the State of Linear RNNs through Sparsity"
+  },
+  {
     "date": "2026-07-09c",
     "title": "主干够强，翻译官就多余",
     "paper": "Gemma 4 Technical Report"
