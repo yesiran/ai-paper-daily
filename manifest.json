@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-15",
+    "title": "把小模型 RL 学到的「改变」搬给大模型",
+    "paper": "Weak-to-Strong Generalization via Direct On-Policy Distillation"
+  },
+  {
     "date": "2026-07-14",
     "title": "背下来了，却用不出来",
     "paper": "Towards Mechanistically Understanding Why Memorized Knowledge Fails to Generalize in LLM Finetuning"
