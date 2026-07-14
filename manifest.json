@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-14",
+    "title": "背下来了，却用不出来",
+    "paper": "Towards Mechanistically Understanding Why Memorized Knowledge Fails to Generalize in LLM Finetuning"
+  },
+  {
     "date": "2026-07-13",
     "title": "答对的不设上限，答错的才系安全带",
     "paper": "UP: Unbounded Positive Asymmetric Optimization for Breaking the Exploration-Stability Dilemma"
