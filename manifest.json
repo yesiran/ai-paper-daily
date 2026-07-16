@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-17",
+    "title": "推理不是写进去的，是长出来的",
+    "paper": "Ring-Zero: Scaling Zero RL to a Trillion Parameters for Emergent Reasoning"
+  },
+  {
     "date": "2026-07-16",
     "title": "把论文当「图」喂给模型，比当「字」喂更聪明",
     "paper": "Scalable Visual Pretraining for Language Intelligence"
