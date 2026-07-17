@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-18",
+    "title": "技能训进权重，才真长在身上",
+    "paper": "SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning"
+  },
+  {
     "date": "2026-07-17",
     "title": "推理不是写进去的，是长出来的",
     "paper": "Ring-Zero: Scaling Zero RL to a Trillion Parameters for Emergent Reasoning"
