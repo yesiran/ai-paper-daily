@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate%2888%20.5%20.5%29%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23a23a2a%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2323211e%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22url%28%23g%29%22%2F%3E%3Ccircle%20cx%3D%2255%22%20cy%3D%2252%22%20r%3D%2214%22%20fill%3D%22%23fff%22%20opacity%3D%220.21%22%2F%3E%3Ccircle%20cx%3D%2236%22%20cy%3D%2213%22%20r%3D%2226%22%20fill%3D%22%23fff%22%20opacity%3D%220.19%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2232%22%20dy%3D%22.36em%22%20text-anchor%3D%22middle%22%20font-family%3D%27-apple-system%2C%22PingFang%20SC%22%2C%22Noto%20Sans%20SC%22%2Csans-serif%27%20font-size%3D%2234%22%20font-weight%3D%22700%22%20fill%3D%22%23faf8f4%22%3E%E6%96%87%3C%2Ftext%3E%3C%2Fsvg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RL 只是重新布了根线 · YSR Read Paper</title>
+<style>
+  :root{
+    --paper:#faf8f4; --ink:#23211e; --muted:#7a756c; --faint:#a8a298;
+    --rule:#e7e1d6; --accent:#a23a2a; --accent-soft:#f0e3df;
+    --serif:"Songti SC","Noto Serif SC",Georgia,"Times New Roman",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,system-ui,sans-serif;
+    --col:760px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.85;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+  a:hover{border-bottom-color:var(--accent)}
+  .wrap{display:grid;grid-template-columns:1fr var(--col) 1fr;gap:0}
+  .rail{grid-column:1;position:sticky;top:0;align-self:start;height:100vh;
+    padding:54px 28px;display:flex;flex-direction:column;justify-content:center}
+  .main{grid-column:2;padding:72px 32px 120px}
+  .rail-r{grid-column:3}
+  .toc{font-size:13px;line-height:2.2;max-width:170px;margin-left:auto}
+  .toc .kicker{font-family:var(--serif);color:var(--faint);letter-spacing:.16em;
+    font-size:11px;text-transform:uppercase;margin-bottom:14px}
+  .toc a{display:block;color:var(--muted);border:0;padding-left:14px;
+    border-left:2px solid var(--rule);transition:.2s}
+  .toc a:hover{color:var(--accent);border-left-color:var(--accent)}
+  .hero{border-bottom:1px solid var(--rule);padding-bottom:38px;margin-bottom:48px}
+  .hero .tag{font-family:var(--serif);letter-spacing:.22em;font-size:12px;
+    text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:44px;line-height:1.28;
+    letter-spacing:.01em;margin:0 0 16px}
+  .hero .en{font-family:var(--serif);font-style:italic;color:var(--muted);
+    font-size:18px;line-height:1.5;margin-bottom:24px}
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{font-size:12.5px;color:var(--muted);background:#fff;border:1px solid var(--rule);
+    border-radius:100px;padding:4px 13px}
+  .pill.hot{color:var(--accent);border-color:var(--accent-soft);background:var(--accent-soft)}
+  section{margin:0 0 64px;scroll-margin-top:32px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px;
+    padding-bottom:12px;border-bottom:1px solid var(--rule)}
+  .sec-num{font-family:var(--serif);font-size:15px;color:#fff;background:var(--accent);
+    width:30px;height:30px;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;flex:0 0 auto;font-weight:600}
+  .sec-head h2{font-family:var(--serif);font-weight:600;font-size:27px;margin:0}
+  .sec-head .lens{margin-left:auto;font-size:12px;color:var(--faint);font-family:var(--serif)}
+  .main h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:34px 0 12px}
+  .main h4{font-weight:600;font-size:16px;color:var(--accent);margin:24px 0 8px}
+  .main p{margin:0 0 18px}
+  .main strong{font-weight:600;color:#000}
+  .main ul,.main ol{margin:0 0 18px;padding-left:22px}
+  .main li{margin:0 0 10px}
+  .main em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+  .beat{font-family:var(--serif);color:var(--accent);font-weight:600}
+  blockquote{margin:34px 0;padding:6px 0 6px 26px;border-left:3px solid var(--accent);
+    font-family:var(--serif);font-size:22px;line-height:1.6;color:var(--ink)}
+  blockquote cite{display:block;margin-top:10px;font-family:var(--sans);font-style:normal;
+    font-size:13px;color:var(--faint)}
+  figure{margin:44px 0;text-align:center}
+  figure svg{max-width:100%;height:auto;border:1px solid var(--rule);border-radius:6px;
+    background:#fffdf9;box-shadow:0 2px 24px rgba(0,0,0,.06)}
+  figcaption{font-size:13px;color:var(--faint);margin-top:12px;font-family:var(--serif)}
+  pre.ascii{background:#fff;border:1px solid var(--rule);border-radius:6px;
+    padding:16px 18px;overflow-x:auto;font-family:"SF Mono",Menlo,Consolas,monospace;
+    font-size:13px;line-height:1.55;color:#333}
+  .turn{margin:0 0 18px;padding-left:16px;border-left:2px solid var(--rule)}
+  .turn .who{font-family:var(--serif);font-weight:600;color:var(--accent);font-size:15px}
+  .qa{margin:0 0 22px}
+  .qa .q{font-weight:600;color:#000}
+  .qa .q::before{content:"Q ";color:var(--accent);font-family:var(--serif)}
+  .qa .a{color:var(--muted)}
+  .qa .a::before{content:"A ";color:var(--faint);font-family:var(--serif)}
+  .sources{border-top:1px solid var(--rule);padding-top:28px;margin-top:72px;
+    font-size:13.5px;color:var(--muted);line-height:1.9}
+  .sources h3{font-family:var(--serif);font-size:15px;color:var(--ink);margin:0 0 12px}
+  .sign{margin-top:42px;font-family:var(--serif);font-size:13px;color:var(--faint);
+    text-align:center;letter-spacing:.1em}
+  @media (max-width:1100px){
+    .wrap{grid-template-columns:1fr;}
+    .rail,.rail-r{display:none}
+    .main{grid-column:1;max-width:var(--col);margin:0 auto;padding:48px 22px 90px}
+  }
+  @media (max-width:560px){
+    body{font-size:16px}
+    .hero h1{font-size:32px}
+    blockquote{font-size:19px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="rail">
+    <div class="toc">
+      <div class="kicker">YSR Read</div>
+      <a href="#story">❶ 故事</a>
+      <a href="#river">❷ 脉络</a>
+      <a href="#essence">❸ 本质</a>
+      <a href="#debate">❹ 思辨</a>
+      <a href="#qa">❺ 自测</a>
+    </div>
+  </nav>
+
+  <main class="main">
+    <header class="hero">
+      <div class="tag">YSR Read Paper · 2026-07-19</div>
+      <h1>RL 没给模型灌新知识，<br>只给它重新布了根线</h1>
+      <div class="en">Spectral Rewiring for Exploration, Purification, and Model Merging</div>
+      <div class="pills">
+        <span class="pill">清华 AIR · 张亚勤 / 马维英 / 周浩</span>
+        <span class="pill">2026-07-03</span>
+        <span class="pill hot">HF 07-17 · 21 赞（机制轴，非票数选）</span>
+        <span class="pill">与 07-15 Direct-OPD 同组</span>
+        <span class="pill"><a href="https://arxiv.org/abs/2607.03065">arXiv 2607.03065</a></span>
+      </div>
+    </header>
+
+    <!-- ❶ 故事 -->
+    <section id="story">
+      <div class="sec-head"><span class="sec-num">1</span><h2>故事</h2><span class="lens">七拍 · ljg-paper</span></div>
+
+      <p><span class="beat">① 主角</span>——一次 RL 后训练留下的<strong>「更新量」</strong>，记作 <strong>ΔW</strong>（delta-W，就是"变化量"）。先建画面：一个大模型的某一层，本质是一张巨大的数字表格（权重矩阵 W）。预训练花海量算力，把它从随机噪声调成"懂世界"的样子，叫 <strong>W₀（底座）</strong>。再做 RL 后训练——反复做数学题、做对给奖励——练完得到新表格 <strong>W_RL</strong>。这次到底改了什么？就是两张表相减：<strong>ΔW = W_RL − W₀</strong>。RL 让模型变强的全部秘密，都藏在这张 ΔW 里。</p>
+
+      <p><span class="beat">② 困境</span>——ΔW 是一张跟底座一样大、密密麻麻全是改动的表格，<em>看不出哪些改动是真本事、哪些是白改甚至有害的噪声</em>。分不清，就同时卡住三件很贵的事：<strong>探索见顶</strong>（让模型对一道难题多试 k 次、只要一次对就算会——学界叫 pass@k——试到一定次数分数就不涨了，路子就那么几条）；<strong>多能力打架</strong>（想要一个模型既会数学又会写代码，混在一起训，结果数学涨、代码却被压下去）；<strong>合并即报废</strong>（把"数学专家"和"代码专家"的 ΔW 天真地加一块，两边本事都缩水，甚至不如单独一个）。</p>
+
+      <p><span class="beat">③ 旧路</span>——两条不够用的老路。<strong>老路 A·低秩压缩</strong>（LoRA 那一套的直觉）：大家早发现 ΔW 其实"很扁"，几百个方向就够描述（数学上叫低秩）。但它只说"扁"，没说"扁在哪个方向才对"。<strong>老路 B·任务算术</strong>（Task Arithmetic、TIES-Merging）：做合并时把两个专家的 ΔW 当能力向量直接加减、投票裁冲突。但都是在"糊成一团的原始坐标系"里硬缝，两个专家各说各话、坐标对不齐，缝出来就打架。共同盲点：<em>没人回去问——底座 W₀ 自己有没有一套天然坐标系，能把 ΔW 摆正看清</em>。</p>
+
+      <p><span class="beat">④ 转折</span>——作者把一个几十年的老工具 <strong>SVD（奇异值分解）</strong> 重新解释了一遍。任何权重表格都能被 SVD <strong>唯一地拆成三块相乘：W₀ = U × Σ × Vᵀ</strong>。其中 <strong>U 和 V</strong> 是两组互相垂直的"方向"，你把每个方向想成模型的一个<strong>「原子技能」</strong>（识别一个否定词、把两个数相加、判断因果先后这种最小的本事）——作者原话："底座权重的奇异向量代表了预训练学到的原子技能。" <strong>Σ（西格玛）</strong>是一张<strong>只有对角线有数、其余全 0</strong> 的表，它管这些技能"原本怎么连、各使多大劲"——对角意味着出厂时是最简单的"一对一"，各技能自己管自己。转折的大胆假设是：</p>
+
+      <blockquote>一次 RL 带来的"真本事"，应该完全能在底座已有的这套技能坐标系里被找回来——它没有、也不需要真的长出任何新方向。<cite>RL 不是造新技能，只是把已有技能重新接线。</cite></blockquote>
+
+      <p><span class="beat">⑤ 解法</span>——<strong>SAR（Subspace-Aligned Rewiring，子空间对齐重连）</strong>，全程事后动手、不重训（training-free）：① 对 W₀ 做 SVD 拿到技能坐标系 U、Σ、Vᵀ；② 取 ΔW 最主要的一小撮方向（先滤掉零碎噪声）；③ <strong>把它投影回底座坐标系：M = Uᵀ × ΔW_k × V</strong>——这张 <strong>「重连矩阵 M」是全篇题眼</strong>，记录 RL 到底把哪些原子技能之间的线重新接了、接多紧；④ 只用干净的 M 重建改动量装回底座。关键：底座出厂的连接表 Σ 是<strong>对角</strong>的（一对一），而 RL 练出来的 M 是<strong>密密麻麻、非对角</strong>的——它的对角元只是把某个技能<strong>调大调小音量</strong>，而<strong>非对角元 M_ij</strong> 让好几个原子技能<strong>"汇流"到同一个结论方向</strong>，作者叫<strong>"多对一的逻辑综合"</strong>，这正是"多个前提 → 推出一个结论"这种关系推理的数学长相。一句话世界观（作者原话）：<em>"后训练是在改变技能方向如何被连接，而不是替换掉模型学到的那套基。"</em> —— RL 是电工重新布线，不是工人盖新房；SAR 就是那把能"只把新布的线剪下来单独拿走"的镊子。</p>
+
+      <p><span class="beat">⑥ 结局</span>——剪完后世界变了三个样，每个都带一条反直觉的尾巴。<strong>① 抽取（治探索见顶）：</strong>那张重连矩阵 M 只有 <strong>约 0.58% 的参数</strong>（1.5B 上 900 万个数、32B 上 0.64%），重建的模型 AIME 数学均分几乎一字不差（40.31%→40.21%），但"多试几次"的能力从 k=2 起就<strong>反超了完整 RL</strong>（30 道 AIME 做对 26、完整 RL 只对 25）——<em>把 99% 的改动剪掉，探索不降反升</em>，因为那 99% 里有一批多余方向在<strong>主动收窄</strong>想象力。<strong>② 提纯（治多能力打架）：</strong>数学+代码混训里代码被压制，SAR 滤掉互相踩脚的正交方向后，代码基准<strong>涨了</strong>（LiveCodeBench v5 67.61→69.09），而数学、指令遵循都没掉——<em>压缩这个动作反而把被压住的能力放了出来</em>。<strong>③ 合并（治合并即报废）：</strong>把两专家的改动量先投影到共同坐标系再相加，合并模型<strong>同时超过它的两个"父母"</strong>（1.5B AIME 43.44 &gt; 最好单专家 40.31；14B 代码 61.00→63.40）。顺手：agentic coding 7 个基准涨 6 个（SWE-Bench-Pro +10.21%、TerminalBench 2.0 +25.10%）。</p>
+
+      <p><span class="beat">⑦ 内核</span>——带走这一颗种子就够：<strong>RL 后训练不是"上新课"，是"重新布线"。</strong>原子技能在预训练时就长齐了；RL 只是把它们之间的连接从"各管各的一对一"改写成"多前提汇流到一个结论的密网"。这个改写极其稀疏——真正管用的只占 0.58% 参数，还能被一把 SVD 事后<strong>看清、剪出、搬走、提纯、拼合</strong>。一旦"后训练改了什么"变成看得见摸得着可手术的东西，很多原本靠"重训碰运气"的事，就变成了可控的工程。</p>
+    </section>
+
+    <!-- 视觉笔记 -->
+    <figure>
+      <svg viewBox="0 0 960 430" width="960" role="img" aria-label="SAR 谱重连示意图">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#a23a2a"/>
+          </marker>
+        </defs>
+        <style>
+          .t{font-family:"Songti SC","Noto Serif SC",Georgia,serif}
+          .s{font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+          .lbl{fill:#7a756c;font-size:12.5px}
+          .big{fill:#23211e;font-weight:600}
+          .ac{fill:#a23a2a}
+        </style>
+        <text x="40" y="42" class="t big" font-size="17">底座 W₀ ＝ 预训练造好的一堆「原子技能」</text>
+        <text x="40" y="64" class="s lbl">SVD 把权重唯一拆开：W₀ = U × Σ × Vᵀ</text>
+
+        <!-- Σ 对角矩阵 -->
+        <text x="66" y="112" class="s lbl">出厂连接表 Σ（对角＝一对一）</text>
+        <g transform="translate(70,124)">
+          <rect x="0" y="0" width="120" height="120" fill="#fff" stroke="#e7e1d6"/>
+          <g fill="#c9c3b8"><circle cx="20" cy="20" r="7"/><circle cx="50" cy="50" r="7"/><circle cx="80" cy="80" r="7"/><circle cx="105" cy="105" r="6"/></g>
+        </g>
+        <text x="70" y="272" class="s lbl">技能各管各、井水不犯河水</text>
+
+        <!-- arrow RL -->
+        <g>
+          <line x1="230" y1="184" x2="360" y2="184" stroke="#a23a2a" stroke-width="2" marker-end="url(#ah)"/>
+          <text x="238" y="172" class="t ac" font-size="14" font-weight="600">RL 后训练</text>
+          <text x="238" y="204" class="s lbl">≠ 造新技能</text>
+          <text x="238" y="222" class="s lbl">= 重新接线</text>
+        </g>
+
+        <!-- M dense matrix -->
+        <text x="392" y="112" class="s lbl">重连矩阵 M（密网＝非对角）</text>
+        <g transform="translate(384,124)">
+          <rect x="0" y="0" width="120" height="120" fill="#fff" stroke="#a23a2a"/>
+          <g>
+            <circle cx="20" cy="20" r="7" fill="#a23a2a"/><circle cx="50" cy="50" r="7" fill="#a23a2a"/><circle cx="80" cy="80" r="7" fill="#a23a2a"/><circle cx="105" cy="105" r="6" fill="#a23a2a"/>
+            <circle cx="50" cy="20" r="5" fill="#d8a99f"/><circle cx="80" cy="20" r="4" fill="#e6c8c1"/><circle cx="20" cy="50" r="5" fill="#d8a99f"/><circle cx="80" cy="50" r="4" fill="#e6c8c1"/><circle cx="20" cy="80" r="4" fill="#e6c8c1"/><circle cx="50" cy="80" r="5" fill="#d8a99f"/><circle cx="105" cy="50" r="4" fill="#e6c8c1"/><circle cx="20" cy="105" r="4" fill="#e6c8c1"/>
+          </g>
+        </g>
+        <text x="384" y="272" class="s lbl"><tspan class="ac" font-weight="600">对角</tspan>＝调音量　<tspan class="ac" font-weight="600">非对角</tspan>＝多前提→一结论</text>
+        <text x="384" y="290" class="s lbl">这张 M 只占 <tspan class="ac big" font-size="15">0.58%</tspan> 参数，可事后剪出</text>
+
+        <!-- arrow to outcomes -->
+        <line x1="516" y1="184" x2="596" y2="184" stroke="#a23a2a" stroke-width="2" marker-end="url(#ah)"/>
+
+        <!-- three outcomes -->
+        <g transform="translate(612,120)">
+          <rect x="0" y="0" width="300" height="42" fill="#f0e3df" stroke="#e7e1d6" rx="5"/>
+          <text x="14" y="19" class="t ac" font-size="13.5" font-weight="600">① 抽取 → 探索反超完整 RL</text>
+          <text x="14" y="35" class="s lbl">剪掉 99% 改动，pass@k 从 k=2 起更高</text>
+
+          <rect x="0" y="54" width="300" height="42" fill="#f0e3df" stroke="#e7e1d6" rx="5"/>
+          <text x="14" y="73" class="t ac" font-size="13.5" font-weight="600">② 提纯 → 释放被压制的能力</text>
+          <text x="14" y="89" class="s lbl">混训里被数学压住的代码，喘回来了</text>
+
+          <rect x="0" y="108" width="300" height="42" fill="#f0e3df" stroke="#e7e1d6" rx="5"/>
+          <text x="14" y="127" class="t ac" font-size="13.5" font-weight="600">③ 合并 → 超过两个「父母」</text>
+          <text x="14" y="143" class="s lbl">先翻译到同一坐标系，正和不打架</text>
+        </g>
+
+        <line x1="40" y1="330" x2="920" y2="330" stroke="#e7e1d6"/>
+        <text x="40" y="366" class="t big" font-size="16">内核：后训练是电工<tspan class="ac">重新布线</tspan>，不是工人盖新房</text>
+        <text x="40" y="392" class="s lbl">预训练长出那套「基」（原子技能）· 后训练只重连这套基 · 唤醒器，非创造器</text>
+      </svg>
+      <figcaption>视觉锚 · 一张图看懂 SAR：SVD 把底座拆成原子技能，RL 只是把对角的 Σ 改写成密网 M，而这张网只占 0.58% 参数、可被事后剪出→抽取/提纯/合并</figcaption>
+    </figure>
+
+    <!-- ❷ 脉络 -->
+    <section id="river">
+      <div class="sec-head"><span class="sec-num">2</span><h2>脉络</h2><span class="lens">倒读溯源 · ljg-paper-river</span></div>
+
+      <h4>第 1 层 · 它在改进谁 / 它的近亲</h4>
+      <p>SAR 站在两条线的交叉口。一条是<strong>低秩微调</strong>（LoRA / DoRA / PiSSA——"改动量很扁"），SAR 把它往前推一步："真正管用的方向不只是低秩，<strong>还必须跟底座自己的坐标系对齐</strong>。"另一条是<strong>模型合并</strong>（Task Arithmetic，Ilharco 2022，把能力当向量加减；TIES-Merging，Yadav 2023，投票裁冲突），SAR 说"别在原始坐标里硬缝，<strong>先投影到底座谱坐标里再缝</strong>"。它还给一个已知现象补了机制——Ren 等 2026 观察到"RL 训出的模型比 SFT 更好合并"，SAR 的解释是：因为 RL 只重连、没改基，坐标系还对得上。</p>
+
+      <h4>第 2 层 · "后训练到底改了什么"这条问题线</h4>
+      <p>它的上一步，是"RL 更新很稀疏 / 很局部"这一整波认识。台账里的 <a href="https://arxiv.org/abs/2607.06987">One Layer Enough（07-11）</a>（只训一层就能追平全参数 RL）从<strong>「哪几层」</strong>的角度说了一半；pass@k 的"唤醒论之争"（Brown 2024《Large Language Monkeys》、以及那场"RL 是调高已有解法的概率、不是教新解法"的辩论）从<strong>「行为」</strong>的角度说了一半。SAR 从<strong>「参数几何」</strong>的角度把这半张地图补完：稀疏不只体现在"哪几层"，更体现在"哪个谱方向"。它借的零件是老 SVD 压缩那一脉（ASVD、SVD-LLM 做模型瘦身），<strong>新意在于第一次把 SVD 从"压缩工具"改造成"读懂 RL 改了什么的显微镜"</strong>。</p>
+
+      <h4>第 3 层 · 根</h4>
+      <p>最底下那个问题是——<strong>"预训练"和"后训练"的分工到底是什么？</strong>SAR 给了一个干净答案：<em>预训练负责长出那套「基」（原子技能=奇异向量），后训练只负责"重新连接"这套基（把对角的 Σ 改写成密网 M）。</em>后训练是唤醒器 / 重连器，不是创造器。这跟台账这半个月最深的一条暗线严丝合缝：Tool-RL-Collapse（RL 崩的是格式外壳不是能力内核）、Latent-Thoughts（潜向量里没真装进新东西）、One-Layer-Enough（一层就够）、SAR（谱核 0.58% 就够）——<strong>四个完全不同的切法，四次指向同一结论：后训练比它看起来的样子，轻得多、稀疏得多。</strong>它又同 UFP4（质疑 4 比特的尺子）一个气质——回去质疑一个没人质疑的默认，这次质疑的是"RL 到底在往模型里加东西吗"。</p>
+    </section>
+
+    <!-- ❸ 本质 -->
+    <section id="essence">
+      <div class="sec-head"><span class="sec-num">3</span><h2>本质</h2><span class="lens">追本之箭 · ljg-think</span></div>
+      <p>把这篇的核心论点一路向下钻，直到不可再分：</p>
+      <pre class="ascii">论点：SAR 能把 RL 的推理增益压进 0.58% 参数还更强
+  │  为什么能压这么狠？
+  ▼
+因为 RL 的"真本事"本就活在底座已有的谱子空间里，没长新方向
+  │  为什么不用长新方向就够？
+  ▼
+因为"推理"需要的原子技能（识否定、做加法、判因果…）预训练早就学会了
+  │  那 RL 到底新做了什么？
+  ▼
+它只改了这些技能"如何互相连接"——把 Σ 的一对一，改成 M 的多对一汇流
+  │  为什么"改连接"就能变出推理能力？
+  ▼
+因为推理＝多个已知前提，按正确方式汇流到一个新结论（非对角元 M_ij 干的就是这个）
+  │  再往下，这说明智能的"新能力"是什么？
+  ▼
+━━ 不可再分的底 ━━
+多数"新能力"不是新造出来的零件，是把旧零件接出了新回路。
+预训练是造零件（长出那套基），后训练是接线（重排连接）。
+"学会推理"更像"学会布线"，而不是"学会一个新事实"。</pre>
+      <p>钻到底得到的这颗种子，比论文本身更大：它把"模型能力从哪来"这个问题，从"训练往里灌了多少东西"，换成了<strong>"训练把已有的零件重新接成了什么回路"</strong>。这解释了两件一直费解的事——为什么小小的后训练能带来大的推理提升（唤醒已有能力，成本本就该低），以及为什么多能力一起训会打架（在正交方向上互相把线接乱）。</p>
+    </section>
+
+    <!-- ❹ 思辨 -->
+    <section id="debate">
+      <div class="sec-head"><span class="sec-num">4</span><h2>思辨</h2><span class="lens">圆桌 · ljg-roundtable</span></div>
+      <p>议题：<strong>SAR 是否证明了"RL 什么新东西都没创造、只是重连"？还是只在这些任务/规模上成立？</strong>请到四位。</p>
+
+      <div class="turn"><span class="who">唤醒派（pass@k / R1-Zero 批判一路）</span><br>这正是我们一直说的。RL 不教新解法，它只是把模型本来偶尔能想到的好路子，调成更常想到。SAR 把这句话钉死在参数层面了——增益就住在预训练已有的谱子空间里，0.58%，剪掉其余 99% 反而 pass@k 更高。这不就是"RL 只做 sharpening、不做 discovery"的铁证吗？</div>
+
+      <div class="turn"><span class="who">涌现派（DeepSeek-R1 / Ring-Zero 一路）</span><br>别急着下结论。SAR 说的是"<em>推理有效的那部分</em>能在谱子空间里被找回"，作者自己很小心地补了一句——"这并不意味着所有被丢掉的方向在任何情况下都无用"。也就是说：在这些已经被蒸馏/对齐过的推理模型上、在数学和代码这类任务上，增益恰好落在旧坐标系里。但纯 zero-RL 从原始基座长出 self-verification、context anxiety 这些行为时，正交方向可能真的在长新东西。SAR 证明的是"有一大块更新是冗余的"，不是"RL 永远不创造"。</div>
+
+      <div class="turn"><span class="who">机制派（可解释性 / One-Layer-Enough 一路）</span><br>我站中间，但更偏第一位。注意 SAR 和"只训一层就够"是<strong>两个独立实验、同一个形状</strong>：一个说增益集中在少数几层，一个说增益集中在谱子空间的一小撮方向。两把完全不同的尺子量出同样的"稀疏"，这种三角互证很难是巧合。它强烈暗示：至少对当代这批推理模型，后训练的作用面积远小于我们直觉。至于是不是"绝对没创造"——那是个更难证的全称命题，SAR 没声称，我们也别替它声称。</div>
+
+      <div class="turn"><span class="who">思染（产品视角）</span><br>对我，谁对谁错的哲学之争可以先放一放，真正能拿走的是三条可操作的：第一，多能力混训会<strong>几何性地互相压制</strong>，而且平均分看不出来——这是京小贝的暗雷，得分能力单独考。第二，能力退化多半不是数据不够，是正交噪声在压，<strong>可以事后提纯救回、不必重训</strong>。第三，"合并能超单专家"如果稳，就是多能力产品的省钱杠杆。至于 RL 到底创不创造新东西——我更在意的是那句"想让模型会做某事，先问它预训练里有没有这个原子技能"，这直接决定我该调提示词、还是该换底座。</div>
+
+      <p style="color:var(--faint);font-size:14px">圆桌收束：四方共识落在一句——<strong>SAR 确证了"当代推理模型的后训练增益高度稀疏、且大多住在预训练已有坐标系里"</strong>；分歧只在"这是否等于 RL 从不创造"，而这恰是论文诚实留白、没有越界宣称的地方。边界清楚，结论才站得住。</p>
+    </section>
+
+    <!-- ❺ 自测 -->
+    <section id="qa">
+      <div class="sec-head"><span class="sec-num">5</span><h2>自测</h2><span class="lens">问答链 · ljg-qa</span></div>
+
+      <div class="qa"><p class="q">一次 RL 后训练的"改动"，数学上怎么被单独拎出来？</p><p class="a">用训练后的权重减去训练前的底座：ΔW = W_RL − W₀。这张"改动表格"跟底座一样大，装着这次训练带来的全部变化。</p></div>
+
+      <div class="qa"><p class="q">SVD 把底座 W₀ 拆成 U、Σ、Vᵀ，这三块各代表什么？</p><p class="a">U、V 的奇异向量＝预训练学到的一个个"原子技能"（互相垂直的方向）；对角矩阵 Σ＝这些技能出厂时怎么连、各使多大劲，且对角意味着"一对一、各管各"。</p></div>
+
+      <div class="qa"><p class="q">SAR 的核心假设是什么？为什么它反直觉？</p><p class="a">假设 RL 带来的真本事，完全能在底座已有的技能坐标系里被找回、没长出任何新方向。反直觉在于：它等于说 RL 没"学"到新东西，只是把旧技能重新接了线。</p></div>
+
+      <div class="qa"><p class="q">那张"重连矩阵 M"是怎么算出来的？它为什么是题眼？</p><p class="a">把 ΔW 的主要低秩部分投影回底座坐标系：M = Uᵀ·ΔW_k·V。它是题眼，因为它精确记录了"RL 把哪些原子技能之间的线重新接了、接多紧"——底座的连接 Σ 是对角的，M 却是密网。</p></div>
+
+      <div class="qa"><p class="q">M 的对角元和非对角元，含义有什么本质不同？</p><p class="a">对角元 M_ii 只是把某个技能调大调小音量；非对角元 M_ij 让好几个原子技能"汇流"到同一个结论方向＝"多对一逻辑综合"，也就是"多前提→一结论"这种关系推理的数学长相。推理能力主要住在非对角。</p></div>
+
+      <div class="qa"><p class="q">"只用 0.58% 参数、探索反而超过完整 RL"——这句话最反直觉，怎么解释？</p><p class="a">因为完整 RL 的改动里既有真本事，也有一批多余方向，而这些多余方向会主动收窄有用的探索。剪掉它们，模型的想象力反而更宽。冗余不是中性的，是有害的。</p></div>
+
+      <div class="qa"><p class="q">"压缩反而释放能力"是怎么发生的？</p><p class="a">数学+代码混训时，两种能力在参数空间的正交方向上互相踩脚，代码被数学压住。SAR 把这些互相踩脚的正交方向滤掉，被压的代码能力就"喘过气"回来了——所以压缩这个动作反而放出了产能。</p></div>
+
+      <div class="qa"><p class="q">SAR 的模型合并，凭什么能超过两个原专家？</p><p class="a">关键是先把两个专家的改动量都投影到"底座这个共同坐标系"再相加，而不是在各说各话的原始坐标里硬缝。翻译到同一套坐标后它们不打架，于是出现"正和"——1+1 变成 1.1，同时超过数学专家和代码专家。</p></div>
+
+      <div class="qa"><p class="q">这篇最该记住的一句世界观是什么？</p><p class="a">"后训练是在改变技能方向如何被连接，而不是替换掉模型学到的那套基。"——RL 是电工重新布线，不是工人盖新房。</p></div>
+
+      <div class="qa"><p class="q">对京小贝，最能直接落地的一条判断是什么？</p><p class="a">想让模型学会做某件事，先问：它预训练里有没有这个"原子技能"？有——后训练或好提示词能把它重连出来（可救）；没有——再怎么 RL 也是无米之炊，得回去换底座。这条尺子能帮你避免在错误方向上砸预算。</p></div>
+    </section>
+
+    <div class="sources">
+      <h3>来源 &amp; 镜头存档</h3>
+      <p>
+        论文：<a href="https://arxiv.org/abs/2607.03065">Spectral Rewiring for Exploration, Purification, and Model Merging（arXiv 2607.03065，2026-07-03）</a><br>
+        全文 HTML：<a href="https://arxiv.org/html/2607.03065">arxiv.org/html/2607.03065</a><br>
+        信号（HF 上榜/票数）：<a href="https://huggingface.co/papers/date/2026-07-17">HF Daily Papers 07-17 窗口 · 21 赞</a>（机制轴，靠锐度+AIR 血统选入，非票数）<br>
+        引用（Semantic Scholar）：引用 0 / influential 0（发表 16 天，正常）<br>
+        机构：清华大学智能产业研究院 AIR（张亚勤 / 马维英 / 周浩组，与 07-15 Direct-OPD 同组）<br>
+        <em>诚实交底：</em>信号偏弱（无二手讨论、无公开代码）；规模 1.5B–32B 未验证千亿前沿；"非对角=逻辑综合"是作者机制假说非严格证明。五镜头（故事/脉络/本质/思辨/自测）本次由主流程直接精撰合成；视觉锚为内联 SVG 编辑图（保证单文件可移植）。
+      </p>
+      <p>完整版 + 倒读溯源已存入叶思染知识库：wiki/paper-daily/2026-07-19--spectral-rewiring-sar.md</p>
+    </div>
+    <div class="sign">YSR Read Paper — 五镜头深读</div>
+  </main>
+  <div class="rail-r"></div>
+</div>
+</body>
+</html>

@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-19",
+    "title": "RL 没给模型灌新知识，只给它重新布了根线",
+    "paper": "Spectral Rewiring for Exploration, Purification, and Model Merging"
+  },
+  {
     "date": "2026-07-18",
     "title": "技能训进权重，才真长在身上",
     "paper": "SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning"
