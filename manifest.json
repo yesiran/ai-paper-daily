@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-21",
+    "title": "读广写窄：模型变强的第三条路",
+    "paper": "xHC: Expanded Hyper-Connections"
+  },
+  {
     "date": "2026-07-20",
     "title": "会说的不会脑补，会脑补的不会想事——把推理和想象拧进同一条规划序列",
     "paper": "RxBrain: Embodied Cognition Foundation Model with Joint Language-Visual Reasoning and Imagination"
