@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-24",
+    "title": "模型读的时候，早就标好了哪行没用",
+    "paper": "SWE-Pruner Pro: The Coder LLM Already Knows What to Prune"
+  },
+  {
     "date": "2026-07-23",
     "title": "模型嘴上说的和心里算的，原来是两条线",
     "paper": "Verbalizable Representations Form a Global Workspace in Language Models"
