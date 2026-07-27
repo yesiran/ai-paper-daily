@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-27",
+    "title": "会自己审自己的研究员",
+    "paper": "AREX: Towards a Recursively Self-Improving Agent for Deep Research"
+  },
+  {
     "date": "2026-07-24",
     "title": "模型读的时候，早就标好了哪行没用",
     "paper": "SWE-Pruner Pro: The Coder LLM Already Knows What to Prune"
