@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-07-28",
+    "title": "生成不必靠对手，也不必靠路线——三个小球，一步画出真图",
+    "paper": "Three-Body Scattering for Generative Modeling"
+  },
+  {
     "date": "2026-07-27",
     "title": "会自己审自己的研究员",
     "paper": "AREX: Towards a Recursively Self-Improving Agent for Deep Research"
