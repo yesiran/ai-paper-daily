@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-01",
+    "title": "先想清楚怎么变，再把画面补出来",
+    "paper": "PhiZero: A World Model Built Around Physical Language"
+  },
+  {
     "date": "2026-07-31",
     "title": "该看哪儿，压缩器早算好了",
     "paper": "Mage-VL: An Efficient Codec-Native Streaming Multimodal Foundation Model"
