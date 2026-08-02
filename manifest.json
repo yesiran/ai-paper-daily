@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-03",
+    "title": "改进者，自己也在被改进",
+    "paper": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering"
+  },
+  {
     "date": "2026-08-02",
     "title": "大模型没在记，只是在反复重读",
     "paper": "Metis: Memory Foundation Model"
