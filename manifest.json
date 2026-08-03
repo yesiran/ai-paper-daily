@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-04",
+    "title": "把「好坏」改写成能核对的「胜负」",
+    "paper": "From RLVR to RLSVR: Task Transformation Induces Self-Verifiable Rewards for Open-Ended LLM Self-Improvement"
+  },
+  {
     "date": "2026-08-03",
     "title": "改进者，自己也在被改进",
     "paper": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering"
