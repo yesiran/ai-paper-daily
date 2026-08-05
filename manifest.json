@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-06",
+    "title": "语言，最后一个还在逐字往外蹦的模态",
+    "paper": "AURORA-LM: Autoencoding Unified Representation for Continuous-Latent Diffusion Language Modeling"
+  },
+  {
     "date": "2026-08-04",
     "title": "把「好坏」改写成能核对的「胜负」",
     "paper": "From RLVR to RLSVR: Task Transformation Induces Self-Verifiable Rewards for Open-Ended LLM Self-Improvement"
