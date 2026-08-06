@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-07",
+    "title": "晚接的能力，会学会偷懒",
+    "paper": "Towards Physics of Multimodal Pretraining: Knowledge Flow, Modality Synergy, Early Unification, and Recipes"
+  },
+  {
     "date": "2026-08-06",
     "title": "语言，最后一个还在逐字往外蹦的模态",
     "paper": "AURORA-LM: Autoencoding Unified Representation for Continuous-Latent Diffusion Language Modeling"
