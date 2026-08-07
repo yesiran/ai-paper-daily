@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-08",
+    "title": "任务能自己加难，agent 训练就没有天花板",
+    "paper": "Recursive Synthesis for Long-Horizon Terminal Tasks"
+  },
+  {
     "date": "2026-08-07",
     "title": "晚接的能力，会学会偷懒",
     "paper": "Towards Physics of Multimodal Pretraining: Knowledge Flow, Modality Synergy, Early Unification, and Recipes"
