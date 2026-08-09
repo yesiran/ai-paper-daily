@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-10",
+    "title": "环境可以内化，不必外造",
+    "paper": "EnvACE: Internalizing Environment Dynamics via World Rehearsal for Agentic Reinforcement Learning"
+  },
+  {
     "date": "2026-08-08",
     "title": "任务能自己加难，agent 训练就没有天花板",
     "paper": "Recursive Synthesis for Long-Horizon Terminal Tasks"
