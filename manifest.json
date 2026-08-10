@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-11",
+    "title": "SFT 相冲，RL 共存：为什么背标准答案越学越崩、自己试错却能一门门叠加",
+    "paper": "SFT Conflicts, RL Coexists: A Theoretical and Empirical Analysis of Multi-Task Learning Paradigms for LLMs"
+  },
+  {
     "date": "2026-08-10",
     "title": "环境可以内化，不必外造",
     "paper": "EnvACE: Internalizing Environment Dynamics via World Rehearsal for Agentic Reinforcement Learning"

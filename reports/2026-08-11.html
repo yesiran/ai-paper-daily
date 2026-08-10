@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!-- YSR Read Paper · 2026-08-11 · SFT Conflicts, RL Coexists · 五镜头深读 -->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20gradientTransform%3D%22rotate%28159%20.5%20.5%29%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23a23a2a%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2323211e%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22url%28%23g%29%22%2F%3E%3Ccircle%20cx%3D%2210%22%20cy%3D%2210%22%20r%3D%2222%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%224%22%20opacity%3D%220.14%22%2F%3E%3Ccircle%20cx%3D%2228%22%20cy%3D%2213%22%20r%3D%2210%22%20fill%3D%22%23fff%22%20opacity%3D%220.25%22%2F%3E%3Ccircle%20cx%3D%2254%22%20cy%3D%2226%22%20r%3D%2217%22%20fill%3D%22%23fff%22%20opacity%3D%220.19%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2232%22%20dy%3D%22.36em%22%20text-anchor%3D%22middle%22%20font-family%3D%27-apple-system%2C%22PingFang%20SC%22%2C%22Noto%20Sans%20SC%22%2Csans-serif%27%20font-size%3D%2234%22%20font-weight%3D%22700%22%20fill%3D%22%23faf8f4%22%3E%E6%96%87%3C%2Ftext%3E%3C%2Fsvg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SFT 相冲，RL 共存 · YSR Read Paper</title>
+<style>
+  :root{
+    --paper:#faf8f4; --ink:#23211e; --muted:#7a756c; --faint:#a8a298;
+    --rule:#e7e1d6; --accent:#a23a2a; --accent-soft:#f0e3df; --green:#2e7d32;
+    --serif:"Songti SC","Noto Serif SC",Georgia,"Times New Roman",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,system-ui,sans-serif;
+    --col:772px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.85;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+  a:hover{border-bottom-color:var(--accent)}
+  .wrap{display:grid;grid-template-columns:1fr var(--col) 1fr;gap:0}
+  .rail{grid-column:1;position:sticky;top:0;align-self:start;height:100vh;
+    padding:54px 28px;display:flex;flex-direction:column;justify-content:center}
+  .main{grid-column:2;padding:72px 32px 120px}
+  .rail-r{grid-column:3}
+  .toc{font-size:13px;line-height:2.2;max-width:180px;margin-left:auto}
+  .toc .kicker{font-family:var(--serif);color:var(--faint);letter-spacing:.16em;
+    font-size:11px;text-transform:uppercase;margin-bottom:14px}
+  .toc a{display:block;color:var(--muted);border:0;padding-left:14px;
+    border-left:2px solid var(--rule);transition:.2s}
+  .toc a:hover{color:var(--accent);border-left-color:var(--accent)}
+  .hero{border-bottom:1px solid var(--rule);padding-bottom:38px;margin-bottom:48px}
+  .hero .tag{font-family:var(--serif);letter-spacing:.22em;font-size:12px;
+    text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:44px;line-height:1.25;
+    letter-spacing:.01em;margin:0 0 16px}
+  .hero .en{font-family:var(--serif);font-style:italic;color:var(--muted);
+    font-size:17px;line-height:1.5;margin-bottom:24px}
+  .pills{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{font-size:12.5px;color:var(--muted);background:#fff;border:1px solid var(--rule);
+    border-radius:100px;padding:4px 13px}
+  .pill.hot{color:var(--accent);border-color:var(--accent-soft);background:var(--accent-soft)}
+  .lede{font-family:var(--serif);font-size:19px;line-height:1.7;color:#3a3530;
+    margin:0 0 8px;padding:2px 0}
+  section{margin:0 0 64px;scroll-margin-top:32px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:24px;
+    padding-bottom:12px;border-bottom:1px solid var(--rule)}
+  .sec-num{font-family:var(--serif);font-size:15px;color:#fff;background:var(--accent);
+    width:30px;height:30px;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;flex:0 0 auto;font-weight:600}
+  .sec-head h2{font-family:var(--serif);font-weight:600;font-size:27px;margin:0}
+  .sec-head .lens{margin-left:auto;font-size:12px;color:var(--faint);font-family:var(--serif)}
+  .main h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:34px 0 12px}
+  .main h4{font-weight:600;font-size:16px;color:var(--accent);margin:24px 0 8px}
+  .main p{margin:0 0 18px}
+  .main strong{font-weight:600;color:#000}
+  .main ul,.main ol{margin:0 0 18px;padding-left:22px}
+  .main li{margin:0 0 8px}
+  .main em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+  blockquote{margin:34px 0;padding:6px 0 6px 26px;border-left:3px solid var(--accent);
+    font-family:var(--serif);font-size:22px;line-height:1.6;color:var(--ink)}
+  blockquote cite{display:block;margin-top:10px;font-family:var(--sans);font-style:normal;
+    font-size:13px;color:var(--faint)}
+  figure{margin:40px 0;text-align:center}
+  figure svg{max-width:100%;height:auto;border:1px solid var(--rule);border-radius:6px;
+    box-shadow:0 2px 24px rgba(0,0,0,.06);background:#faf8f4}
+  figcaption{font-size:13px;color:var(--faint);margin-top:12px;font-family:var(--serif)}
+  pre.ascii{background:#fff;border:1px solid var(--rule);border-radius:6px;
+    padding:16px 18px;overflow-x:auto;font-family:"SF Mono",Menlo,Consolas,monospace;
+    font-size:12px;line-height:1.5;color:#333}
+  .turn{margin:0 0 16px;padding-left:16px;border-left:2px solid var(--rule)}
+  .turn .who{font-family:var(--serif);font-weight:600;color:var(--accent);font-size:15px}
+  .turn .role{color:var(--faint);font-size:12px;font-weight:400}
+  .qa{margin:0 0 22px;padding-bottom:14px;border-bottom:1px dotted var(--rule)}
+  .qa .q{font-weight:600;color:#000;display:block;margin-bottom:6px}
+  .qa .q::before{content:"Q ";color:var(--accent);font-family:var(--serif)}
+  .qa .a{color:#4a453d;display:block}
+  .qa .a::before{content:"A ";color:var(--faint);font-family:var(--serif)}
+  .qa .form{display:block;margin-top:6px;font-family:"SF Mono",Menlo,Consolas,monospace;
+    font-size:12.5px;color:var(--muted);background:#fff;border:1px solid var(--rule);
+    border-radius:5px;padding:6px 10px}
+  .sources{border-top:1px solid var(--rule);padding-top:28px;margin-top:72px;
+    font-size:13.5px;color:var(--muted);line-height:1.9}
+  .sources h3{font-family:var(--serif);font-size:15px;color:var(--ink);margin:0 0 12px}
+  .sources code{font-size:12px;color:var(--faint);word-break:break-all}
+  .sign{margin-top:42px;font-family:var(--serif);font-size:13px;color:var(--faint);
+    text-align:center;letter-spacing:.1em}
+  @media (max-width:1120px){
+    .wrap{grid-template-columns:1fr;}
+    .rail,.rail-r{display:none}
+    .main{grid-column:1;max-width:var(--col);margin:0 auto;padding:48px 22px 90px}
+  }
+  @media (max-width:560px){
+    body{font-size:16px}
+    .hero h1{font-size:32px}
+    blockquote{font-size:19px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="rail">
+    <div class="toc">
+      <div class="kicker">YSR Read</div>
+      <a href="#story">❶ 故事</a>
+      <a href="#river">❷ 脉络</a>
+      <a href="#essence">❸ 本质</a>
+      <a href="#debate">❹ 思辨</a>
+      <a href="#qa">❺ 自测</a>
+    </div>
+  </nav>
+
+  <main class="main">
+    <header class="hero">
+      <div class="tag">YSR Read Paper · 2026-08-11</div>
+      <h1>SFT 相冲，RL 共存：为什么"背标准答案"越学越崩、"自己试错"却能一门门叠加</h1>
+      <div class="en">SFT Conflicts, RL Coexists: A Theoretical and Empirical Analysis of Multi-Task Learning Paradigms for LLMs</div>
+      <div class="pills">
+        <span class="pill">清华 KEG（李涓子组）</span>
+        <span class="pill">中科院自动化所（刘康 / 赵军组）</span>
+        <span class="pill">发表 2026-08-06</span>
+        <span class="pill hot">HuggingFace 当窗口 #1 · 30 赞</span>
+        <span class="pill"><a href="https://arxiv.org/abs/2608.03573">arXiv 2608.03573</a></span>
+      </div>
+    </header>
+
+    <p class="lede">同一个已会推理的小模型，一门门地学数学、科学、逻辑、代码。只换"怎么学"这一件事：用"照抄标准答案"的 SFT，四门平均比没训练还低 <strong>23.1%</strong>——学后一门就把前一门忘光；换成"自己答、按对错自我纠偏"的 RL，四门平均反而涨 <strong>24.9%</strong>——一门门稳稳叠上去。作者没停在"现象好神奇"，而是掀开引擎盖，把差别一路追到参数层面，再锁成一条定理。下面五个镜头，各看一眼。</p>
+
+    <!-- ❶ 故事 -->
+    <section id="story">
+      <div class="sec-head"><span class="sec-num">1</span><h2>故事</h2><span class="lens">七拍 · ljg-paper</span></div>
+
+      <h3>它到底在解决什么</h3>
+      <p>你手里有一个已经会推理的小模型——<strong>DeepSeek-R1-Distill-Qwen-1.5B</strong>。拆开这串名字：15 亿参数（"参数"就是模型内部可调的数字，一共 15 亿个）；"蒸馏"是拿一个更大更强的老师模型 DeepSeek-R1 的答题过程，教出来的小学生版。你想让它再多学四门本事：数学（MATH500 题库）、科学知识（MMLU，一大堆学科的选择题）、逻辑推理（Knights and Knaves"骑士与无赖"谜题：岛上有人只说真话、有人只说假话，靠对话把谁是谁推出来）、写代码（LiveCodeBench，写完真拿去跑，跑通才算对）。</p>
+      <p>教多门课最直接的想法是"一门门来"（多阶段：这门练透了再换下一门）。但一旦用 <strong>SFT</strong>（监督微调；把每道题的标准答案喂给模型，让它照着模仿、背下来）来一门门教，就撞上老毛病——<strong>灾难性遗忘</strong>：学了第二门，第一门像被覆盖一样掉光。数字有多难看？四门平均分不是涨得少，是比没教之前还<em>低 23.1%</em>，越教越差。</p>
+      <p>第二个念头是"混着一起教"，确实能缓解遗忘，但它有个前提：得把四门课全部数据凑齐、一次性重炼。真实产品里你往往是"这个月先上数学，下个月才想加代码"，没法每次都把老数据翻出来从头再来。所以真正卡人的问题是：<strong>能不能一门门增量地加技能，而后一门不毁掉前一门？</strong></p>
+
+      <h3>它真正看见了什么</h3>
+      <p>换成 <strong>RL</strong>（强化学习；不给标准答案，模型自己试着答，答对给奖励、答错给惩罚，自己朝更容易拿奖励的方向调）来一门门教，技能不但不互相覆盖，反而能一层层叠上去——四门平均<em>涨 24.9%</em>。同样一门门来，SFT 塌、RL 叠。作者要回答的不是"哪个分高"，而是"为什么一个相冲、一个共存"。</p>
+      <p><strong>先建一个看得见的东西：把参数更新看成一支箭。</strong>模型学一门课，本质是把内部十几亿个参数朝某个方向挪一点点。把"这一门课让参数整体挪动的量"记成 ΔW（读作 Delta-W，"参数改变量"）：箭的方向＝参数往哪调，箭的长度＝调得多狠。两支箭若指向相近方向，就互相干涉（后一支把前一支拧走）；若互相垂直（数学上叫"正交"：一个往东、一个往北，谁也不影响谁那个方向上的进度），就互不干扰，可以各管各地叠加。</p>
+      <p><strong>关键发现：有一段"所有课共用的大方向"。</strong>作者拆开每门课那支箭，发现里面都混着同一段成分：把话说顺、格式摆对、语气自然、先想再答这类——不管数学还是代码都用得上的通用本事。麻烦正出在它：如果每门课都拼命往这同一段大方向上使劲，四支箭就全挤在一处、高度重合，后一门自然把前一门顶掉。SFT 的目标是"尽量贴近标准答案"，它会把这段共用大方向保留下来还不断加粗，于是四门课的箭又长（更新幅度大）又都朝同一大方向、大量重合。</p>
+      <p><strong>最漂亮的一步：RL 的打分法 GRPO 天生把这段共用大方向减掉。</strong>RL 这边用的具体打分方式叫 <strong>GRPO</strong>（组内相对策略优化）。做法：对同一道题，一口气让模型生成一组答案（比如 8 个），先算这组的平均分，然后每个答案的分数都减掉这个组内平均分——比平均好的往上推，比平均差的往下压。关键在"减掉组内平均分"这一下：这一组的 8 个答案都带着同一段共用大方向（都在用"把话说顺、格式摆对"那套通用本事），一减平均，人人都有的东西就互相抵消没了，只剩下"这个答案比那个答案强在哪"的那点差异——而那点差异恰恰是这门课私有的、真本事的部分。</p>
+      <p>结果就是：RL 每门课的箭被剥掉了共用大方向，只剩各自那一小截私货。所以①箭很短（更新幅度比 SFT 小两个数量级，即约 100 倍）；②箭互相垂直（不同课之间 ΔW 相似度低到约 10⁻⁵，几乎完全不搭界）。又短又垂直，叠再多门都不打架。这就是标题"SFT 相冲，RL 共存"的全部机理。</p>
+
+      <pre class="ascii">一门门教四门课，教法二选一：
+                        ┌─ 箭长 + 全朝"共用大方向" → 高度重合
+  SFT(照抄标准答案) ─────┤
+                        └─ 后一门覆盖前一门 → 遗忘 → 四门平均 −23.1%
+
+                        ┌─ 减组内平均分 → 共用大方向被抵消
+  RL / GRPO(自答+打分)──┤
+                        └─ 箭短 + 互相垂直(正交) → 各科叠加 → 四门平均 +24.9%</pre>
+
+      <p><strong>作者用一个定理把这事钉死（定理 4.5）。</strong>SFT 的干涉是 <strong>norm-limited</strong>（norm 是箭的长度）：两门课打不打架取决于箭有多长——梯度绝对幅度越大越打架，你没法靠"多练"绕开。RL 的干涉是 <strong>variance-limited</strong>（variance 是方差，一组答案彼此有多分散）：取决于同一道题那组答案的多样性，而这个多样性又被两件事卡住上限——一是"减平均再归一化"，二是 on-policy（模型只拿自己当前生成的答案来学、不吃外部旧数据，天然不会跑太偏）。一句话：SFT 的干涉锁在"箭长"上，RL 的干涉锁在"一组答案的分散度"上，后者被机制天然压得很小。</p>
+
+      <h3>反直觉副发现</h3>
+      <p>RL 的箭本来又短又垂直，但如果把每门课都往死里练，箭会越练越长，长到一定程度又开始互相重合、干涉回来。作者用一个旋钮 τ 表示每门课练多狠，发现有个甜点 <strong>τ≈0.65</strong>：不是越狠越好。真正决定四门能不能共存的，不是每门单科考多高，而是有没有把"任务之间的相互干涉"摁住——这直接推翻"每门都练到最好、合起来自然最好"的直觉。（单任务泛化也印证：只教一门时，SFT 把目标门提 4.0% 却把其他门拖低 5.1%；RL 把目标门提 6.8% 且其他门不掉。）</p>
+
+      <h3>把机理变成一个能用的招：Parallel-RL</h3>
+      <p>既然各门课的箭本来就互相垂直，那就别一门门串着练了——每门课单独用 RL 练一个 <strong>LoRA</strong> 小挂件（不动原模型那十几亿参数，只在旁边挂一小片新增参数去学这门课，像给设备外挂一个小插件，训练量极小），四门各练一个，最后把挂件合并回主模型。因为箭本来正交，合并时几乎不打架：朴素合并（直接相加）保住单门单练效果的 <strong>98%</strong>；再做一点适配（Adapted 版）到 <strong>102.8%</strong>——合起来居然比单练还略强一点，等于每门课顺手沾了别门课的光；整体比原模型强 <strong>9.4%</strong>。对产品的意义：加新技能可以"即插即用"——想上一门新本事就单练一个挂件挂上去，不用把全部旧数据翻出来陪练重炼。</p>
+
+      <blockquote>以后遇到任何"加了新的、旧的变差了"的现象，都可以先用这把尺子问一句：是不是两件事在抢同一段"共用大方向"？<cite>—— 故事镜头的内核</cite></blockquote>
+    </section>
+
+    <!-- 视觉笔记：内联 SVG -->
+    <figure>
+<svg viewBox="0 0 760 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SFT相冲 vs RL共存 机理图" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="ahInk" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#6f6a61"/></marker>
+    <marker id="ahAcc" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#a23a2a"/></marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="470" fill="#faf8f4"/>
+  <text x="40" y="42" font-family="Georgia,'Songti SC',serif" fill="#a8a298" font-size="12" letter-spacing="3">机理图 · MECHANISM</text>
+  <text x="40" y="74" font-family="Georgia,'Songti SC',serif" fill="#23211e" font-size="25" font-weight="600">同样"一门门补技能"，凭什么 SFT 崩、RL 稳</text>
+  <text x="40" y="98" fill="#7a756c" font-size="13.5">把"每学一门课，模型参数往哪挪、挪多狠"想成一支箭：方向＝往哪调，长度＝调多狠</text>
+  <line x1="380" y1="128" x2="380" y2="360" stroke="#e7e1d6" stroke-dasharray="2 4"/>
+  <text x="40" y="150" font-family="Georgia,'Songti SC',serif" fill="#a23a2a" font-size="17" font-weight="600">SFT · 监督微调</text>
+  <text x="40" y="170" fill="#7a756c" font-size="12.5">照着标准答案硬背 → 保留并加强"共用大方向"</text>
+  <g stroke="#6f6a61" stroke-width="2.2" marker-end="url(#ahInk)" fill="none" opacity="0.9">
+    <line x1="120" y1="300" x2="214" y2="188"/>
+    <line x1="120" y1="300" x2="226" y2="196"/>
+    <line x1="120" y1="300" x2="236" y2="205"/>
+    <line x1="120" y1="300" x2="206" y2="180"/>
+  </g>
+  <circle cx="120" cy="300" r="3" fill="#23211e"/>
+  <text x="248" y="188" fill="#6f6a61" font-size="11">数 科 逻 码</text>
+  <text x="248" y="204" fill="#a8a298" font-size="10.5">四支箭挤成一束</text>
+  <text x="40" y="336" fill="#23211e" font-size="12.5">箭又长又重合：抢同一块参数 → 后一门把前一门</text>
+  <text x="40" y="353" fill="#23211e" font-size="12.5">拧回去 = <tspan fill="#a23a2a" font-weight="600">灾难性遗忘</tspan></text>
+  <text x="250" y="118" font-family="Georgia,serif" fill="#a23a2a" font-size="30" font-weight="700">−23.1%</text>
+  <text x="250" y="134" fill="#a8a298" font-size="11">四门课平均，比没训练还低</text>
+  <text x="400" y="150" font-family="Georgia,'Songti SC',serif" fill="#a23a2a" font-size="17" font-weight="600">RL · 强化学习（GRPO）</text>
+  <text x="400" y="170" fill="#7a756c" font-size="12.5">减掉组内平均分 → 抵消"共用大方向"</text>
+  <g stroke="#a23a2a" stroke-width="2.4" marker-end="url(#ahAcc)" fill="none">
+    <line x1="560" y1="258" x2="560" y2="204"/>
+    <line x1="560" y1="258" x2="616" y2="258"/>
+    <line x1="560" y1="258" x2="560" y2="312"/>
+    <line x1="560" y1="258" x2="504" y2="258"/>
+  </g>
+  <circle cx="560" cy="258" r="3" fill="#23211e"/>
+  <text x="548" y="197" fill="#6f6a61" font-size="11">数</text>
+  <text x="622" y="262" fill="#6f6a61" font-size="11">科</text>
+  <text x="552" y="328" fill="#6f6a61" font-size="11">逻</text>
+  <text x="486" y="262" fill="#6f6a61" font-size="11" text-anchor="end">码</text>
+  <text x="400" y="352" fill="#23211e" font-size="12.5">箭又短又正交（≈互相垂直）：各调各的 = <tspan fill="#a23a2a" font-weight="600">共存叠加</tspan></text>
+  <text x="620" y="118" font-family="Georgia,serif" fill="#2e7d32" font-size="30" font-weight="700">+24.9%</text>
+  <text x="620" y="134" fill="#a8a298" font-size="11" text-anchor="end">四门课平均，稳稳上涨</text>
+  <rect x="0" y="384" width="760" height="86" fill="#f0e3df"/>
+  <text x="40" y="414" font-family="Georgia,'Songti SC',serif" fill="#a23a2a" font-size="14" font-weight="600">为什么 RL 的箭天生正交？</text>
+  <text x="40" y="436" fill="#3a3530" font-size="13">GRPO 对同一道题一口气生成一组答案，每个答案的分都<tspan font-weight="600">减去这组的平均分</tspan>。四门课的更新里都混着一段所有任务共用的</text>
+  <text x="40" y="455" fill="#3a3530" font-size="13">"大方向"（把话说顺 / 格式摆对 / 语气自然）——一减平均，这段共同的正好<tspan font-weight="600">互相抵消</tspan>，只剩各门课私有、彼此垂直的那一点点。</text>
+</svg>
+      <figcaption>机理图：SFT 的箭又长又重合（相冲），RL 的箭又短又正交（共存）；GRPO"减组内均值"恰好抵消掉所有任务共用的"大方向"。</figcaption>
+    </figure>
+
+    <!-- ❷ 脉络 -->
+    <section id="river">
+      <div class="sec-head"><span class="sec-num">2</span><h2>脉络</h2><span class="lens">倒读溯源 · ljg-paper-river</span></div>
+      <p>读一篇论文最快看懂它分量的办法，不是从头往后读，而是<strong>倒着往上游走</strong>：它在顶谁的牛、改谁的路、接谁没接完的问题。一层层往河的上游溯。</p>
+
+      <h4>第 1 层上游 · 它接的是"后训练该用 SFT 还是 RL"这场老争论</h4>
+      <p>"后训练"＝大模型预训练完之后、把它调教成能听话干活的那一道道工序。早期共识（2022 起）是 SFT 打底、RL 收尾：先用习题册教会"人话怎么说、活怎么干"（里程碑 InstructGPT / RLHF，ChatGPT 就这么调出来的），再用强化学习精修（里程碑 DeepSeek-R1 / RLVR，奖励不靠人拍脑袋、而靠一个能自动判对错的机器：数学答案对不对、代码跑不跑得通）。近一两年越来越多人发现一个反常识现象——<strong>RL 训出来的模型更不容易忘、泛化更好</strong>，但绝大多数工作到此为止：要么只"观察到现象"，要么在测试集上"多赢几分"就收工。<strong>本篇的分量就在于它拒绝停在"RL 更好"这句话上，追问：到底是参数层面发生了什么不一样？</strong>——把整场争论从"谁分高"的赛马场，推进到"为什么"的机理层。</p>
+
+      <h4>第 2 层上游 · 它脚下踩着两块地基</h4>
+      <p><strong>支流 A：多任务学习里的"梯度干涉"（一条很老的老河）。</strong>"梯度"＝模型每看一个例子算出的一句指令"旋钮该往哪拧、拧多少"，可想成一支调整箭头。同时学好几个任务时，A 指东、B 指西，两箭一叠加互相打架——这事学界很早就知道，攒了一堆外挂式缓解办法（梯度投影、任务加权，都是"打架了再拉架"）。本篇新意：RL <strong>根本不用你拉架</strong>——它天生的"优势归一化"动作白捡地把干涉压住了。</p>
+      <p><strong>支流 B：RLVR 到底在模型里改了什么（一条正发烫的新河）。</strong>近两年这条可解释性支流已捞出几块拼图：RLVR 主要只在"主成分方向"（模型的承重墙）上使劲、RL 更新很"稀疏"（真被动的旋钮没几个）。本篇往里添了新拼图——<strong>"多任务正交性"</strong>：不光每次更新稀疏，不同任务动的那几处彼此还互相垂直、不重叠。这把"RL 为什么不忘"从模糊直觉，钉成可证明的几何事实（定理 4.5：SFT 干扰范数受限、RL 干扰方差受限）。</p>
+
+      <h4>第 3 层上游 · 河的源头是"持续学习"这个根问题</h4>
+      <p>再往上溯到源头，是 AI 领域啃了很多年的老问题——<strong>持续学习</strong>：怎么让机器像人一样一直学新东西、又不把旧东西忘掉。过去几十年主流思路都是"设计更聪明的防遗忘机关"（给旧任务留小本子复习、给重要旋钮上锁、给新任务单开一块地）。本篇没有解决它，但给出一个釜底抽薪的提示：</p>
+      <blockquote>也许答案根本不在"防遗忘机关设计得多巧"，而在一开始就选一种"更新方向天生互相垂直"的学习方式——方向本来就错开了，压根不打架，也就没有架要拉。<cite>—— 换个问法，往往比换个答案更值钱</cite></blockquote>
+
+      <pre class="ascii">  ┌────────────────────────────────────────────┐
+  │  源头 · 根问题：持续学习                     │
+  │  让模型「学新不忘旧」；老思路=设计防遗忘机关 │
+  └───────────────────────┬────────────────────┘
+     支流A ↘               │               ↙ 支流B
+ ┌──────────────┐          │          ┌──────────────────┐
+ │ 多任务梯度干涉│          │          │ RLVR改了模型什么  │
+ │ 箭头互相打架  │          │          │ 只动主成分/更新稀疏│
+ │ 老办法:外挂拉架│         │          │                  │
+ └──────┬───────┘          │          └────────┬─────────┘
+        └──────────┐       ▼       ┌────────────┘
+                   ▼               ▼
+  ┌────────────────────────────────────────────┐
+  │  主河道：SFT vs RL 之争 (2022~)             │
+  │  SFT打底+RL收尾 → 发现「RL更不忘」但停在跑分│
+  └───────────────────────┬────────────────────┘
+                          │ 本篇把「谁分高」拽进「为什么」
+                          ▼
+  ╔════════════════════════════════════════════╗
+  ║  入海口 · 本篇：SFT Conflicts, RL Coexists ║
+  ║  SFT −23.1%崩 / RL +24.9%共存               ║
+  ║  机制:GRPO减组内均值→抵消公共大方向→近正交 ║
+  ║  定理4.5:SFT=范数受限 / RL=方差受限         ║
+  ║  应用:Parallel-RL各练LoRA再合并,保98%~102.8%║
+  ╚════════════════════════════════════════════╝</pre>
+      <p>一句话总结这条河：它从"怎么让模型学新不忘旧"这个几十年的老源头出发，汇入"多任务梯度会打架"和"RL 到底改了模型啥"两条支流，穿过"SFT vs RL"的主河道，最后在这篇入海——给出了那个一直缺的"为什么"：<strong>RL 之所以不忘、能共存，是数学结构使然，不是靠谁设计得巧。</strong></p>
+    </section>
+
+    <!-- ❸ 本质 -->
+    <section id="essence">
+      <div class="sec-head"><span class="sec-num">3</span><h2>本质</h2><span class="lens">追本之箭 · ljg-think</span></div>
+      <p>要钻的核心论点：<em>模型能不能一门门持续学新本事而不忘旧的，本质上是"新旧参数更新的方向正不正交"的问题；而训练范式决定了这个正交性是天生自带还是要硬凑。</em>一路钻到底，共七层。</p>
+
+      <h4>第一层 · 覆盖</h4>
+      <p>遗忘不是"记忆被擦掉"。模型没有一格一格的记忆格子，只有一大堆数字（权重）。学一个任务，就是把这堆数字整体往某个方向推一段。学 B 时那一推，若正好把 A 留下的形状抹平——A 就"忘"了。所以遗忘的真身是<strong>覆盖</strong>：同一块存储被后一个任务重写，前一个字迹被盖掉。</p>
+      <h4>第二层 · 方向</h4>
+      <p>关键从来不是"推了多远"，是"往哪个方向推"。两支箭若指着同一条线（重合、平行），第二支就顶翻或改写第一支；若互相垂直（正交：两个方向成 90 度，谁在自己方向上走多远都完全不碰对方那个方向），A 的形状原封不动。于是"忘不忘"被压缩成一个几何量——<strong>两支箭之间的夹角</strong>。实测正是如此：RL 跨任务的 ΔW 相似度约 10⁻⁵（几乎垂直），幅度还比 SFT 小两个数量级；SFT 的箭又长又重合。</p>
+      <h4>第三层 · 基线</h4>
+      <p>所有任务的标准答案都共享一大坨相同的东西——说人话、语法通顺、格式规整、语气礼貌。SFT 每个任务推动的方向里都压着这一大坨相同的"通用底料"，方向相同的粗大公共分量人人都有——这就是 SFT 的箭为什么重合。RL 用 GRPO 的"减组内平均"破了它：同一道题的 8 个答案，共享的恰恰是那坨通用底料，它在"平均分"里占一样的份额，<strong>一减，就没了</strong>。剩下的只有私有差异。</p>
+      <h4>第四层 · 投影</h4>
+      <p>"减掉一组数的平均值"在数学里不是近似，是一个精确的几何操作——<strong>投影</strong>。这是一条恒等式：任何一组数减掉自己的均值之后，剩下的部分<strong>必然</strong>与"全 1 方向"（大家共有的那份成分所住的方向）垂直，内积恰为零。所以"减组内均值"不是"大概能把任务分开"，是"数学上强制让剩余量正交于那个公共成分"，一步到位、毫无误差。定理 4.5 把它量化：SFT 干扰 ∝ 箭有多长（norm-limited）；RL 干扰 ∝ 组内答案有多不一样（variance-limited）。</p>
+      <h4>第五层 · 拥挤</h4>
+      <p>这里露出第一根反直觉的骨头：<strong>干扰的根源，不是任务之间"有冲突"，是任务之间"有共识"。</strong>共享的通用方向，是所有任务的兵家必争之地，于是成了唯一的战场，所有覆盖都发生在这一处。SFT 把所有任务塞进同一块黑板（保留公共轴），于是零和地抢地盘；RL 先把公共黑板收走（减掉公共轴），逼每个任务只在自己的空地上写字，于是变成正和地各占各地。</p>
+      <h4>第六层 · 冗余</h4>
+      <p>公共成分其实没被"扔掉"——它早就在底座里了（预训练阶段"说人话、语法通顺"已学好）。每个新任务方向里那坨通用底料，是在把模型早会的东西又说一遍，是<strong>零新增信息的冗余</strong>。SFT 保留它是纯亏损：传递零比特新信息，却付出满额干扰代价。RL 的减均值恰好一眼认出并丢掉这个零信息冗余，只留每个任务真正新增的那几比特——<strong>只写增量，绝不重写已知</strong>。</p>
+      <h4>第七层 · 差分（底）</h4>
+      <p>一切收束到最朴素的一句：<strong>学习的本质，是记录差异，不是记录状态。</strong>"这个答案比一般答案好在哪"是差异（增量）；"这个答案长什么样"是状态（绝大部分是所有答案共有的冗余）。GRPO 减均值这一下，等于把"状态"变成"差异"，只学增量。而增量天生互相正交——因为"A 题独有的"和"B 题独有的"，按定义就是各自扣掉共有部分之后的剩余，剩余之间已没有任何共同成分可撞。</p>
+      <blockquote>灾难性遗忘不是模型的缺陷，是"记状态、不记差异"这种学法的必然数学后果。凡是共有的都不必再学；凡值得学的，天生互不打架。<cite>—— 追本之箭的底</cite></blockquote>
+    </section>
+
+    <!-- ❹ 思辨 -->
+    <section id="debate">
+      <div class="sec-head"><span class="sec-num">4</span><h2>思辨</h2><span class="lens">圆桌 · ljg-roundtable</span></div>
+      <p>四位圈内人围绕一个大胆命题交锋：<strong>未来造"样样都会"的模型，是不是应该主要靠 RL 后训练一门门叠技能，让 SFT 退到最底层只管打底？</strong></p>
+      <div class="turn"><span class="who">John Schulman</span> <span class="role">· PPO/RLHF 主要发明人</span><br>机制方向对，但"正交"里有一半是"步子太小的假象"——高维空间里两根很短的向量本来就几乎垂直。要证明是"优势归一化"的真功劳，得做"关掉归一化"的对照实验，论文没给。</div>
+      <div class="turn"><span class="who">Chris Olah</span> <span class="role">· 机械可解释性</span><br>参数上垂直 ≠ 功能上不打架。能力藏在被复用的特征里；四门课可以又短又垂直，却都轻轻搓歪同一个"通用推理"特征，而 ΔW 余弦相似度全程还很漂亮。<strong>干扰躲到了参数正交测不到的地方。</strong></div>
+      <div class="turn"><span class="who">Raia Hadsell</span> <span class="role">· 持续学习 / 灾难性遗忘</span><br>"不忘"只是及格线，真正想要的是<strong>正向迁移</strong>（学数学顺带逻辑变强）。而"正交=互不干扰"的代价恰恰是"互不帮忙"——零干扰的另一面就是零迁移。四门课能找到四个垂直方向，一百门课几何上塞不下，必然抢方向。</div>
+      <div class="turn"><span class="who">Yann LeCun</span> <span class="role">· 蛋糕理论 / 泼冷水</span><br>RL 划痕比 SFT 小 100 倍，恰说明它几乎没往里装东西——"不干扰"大半是"没怎么学"。一个奖励几比特、一条标准答案上万比特；扛能力主体的是预训练（蛋糕）和 SFT（糖霜），RL 只是樱桃。把樱桃提拔成主料，是把账本读反了。</div>
+
+      <h4>四轮之后的会师</h4>
+      <p>关键分岔是 Schulman 切的那一刀：优势归一化减的是"同一道题内几遍答案之间的共同平均"（<strong>任务内基线</strong>），不是"跨任务的通用能力"本身，所以不直接掏空通用；<strong>但"彻底退掉 SFT、只做比较式训练"会让通用能力失去唯一的正向补给</strong>，只能被动不掉甚至偏科。四人由此会师到同一条反命题：不该退 SFT，因为只有 SFT / 预训练在灌内容、在长通用底子。而落地方案 Parallel-RL 的"共存"其实来自训练时把各门课<strong>物理隔离</strong>（各练各的 LoRA），功劳该记在"模块化 + 合并"头上，而非"RL 取代 SFT"；扛起 98% 那个"1"的是预训练底座，RL 补丁只贡献那"+9.4%"的调味。</p>
+
+      <pre class="ascii">                「叠技能」想要的三样东西
+      ┌──────────────────┼──────────────────┐
+      ▼                  ▼                  ▼
+ A. 互不删除        B. 通用能力主动长    C. 技能间正向迁移
+ (不遗忘)           (读题/常识/推理)      (1+1>2)
+      │                  │                  │
+ ┌────┴────┐    ┌────────┴────────┐   ┌─────┴─────┐
+ │ RL正交  │    │ 灌内容:          │   │ 共享表征   │
+ │ 天然给✓ │    │ 预训练+SFT       │   │ ✗正交主动  │
+ │(最不值钱)│    │ RL几乎给不了✗    │   │   放弃     │
+ └─────────┘    └──────────────────┘   └───────────┘
+   要A就走正交 → 走正交就同时丢了 B 的补给和 C
+   命题错误：把最不值钱的 A，当成了「叠技能成功」的全部</pre>
+
+      <h4>成立边界三条</h4>
+      <ul>
+        <li><strong>任务有可自动验证的奖励</strong>（数学/代码这类；写作、共情没法像数学那样自动判对错，只能靠 SFT）。</li>
+        <li><strong>任务数量少且相对解耦</strong>（论文四门课底下共享同一套理科内核；换成"更愿意帮忙"和"更严格拒绝"这类目标对冲的技能，正交假设就破了）。</li>
+        <li><strong>有一个已经很强的预训练底座在兜那个"1"</strong>（补丁只贡献"+9.4%"）。</li>
+      </ul>
+      <blockquote>别把它读成"以后少用 SFT、主要用 RL"。更稳的读法：未来多能力模型大概率是"预训练打厚底 + SFT 灌内容 + RL 在有奖励处精修并保平安"的分工，而不是谁取代谁。<cite>—— 圆桌落点</cite></blockquote>
+    </section>
+
+    <!-- ❺ 自测 -->
+    <section id="qa">
+      <div class="sec-head"><span class="sec-num">5</span><h2>自测</h2><span class="lens">问答链 · ljg-qa</span></div>
+      <p>顺着这条问题链走一遍，就是作者从"发现怪事"到"给出定理"再到"变现方法"的完整推理。</p>
+
+      <div class="qa"><span class="q">同样教新课，凭什么 SFT 忘旧、RL 不忘？</span><span class="a">SFT 学新技能会覆盖旧技能（灾难性遗忘），RL 能和旧技能叠加共存——这不是调参没调好，是两种教法的本质差别。</span><span class="form">SFT: 学新A → 压掉旧B(−23.1%)；RL: 学新A → 留住旧B(+24.9%)</span></div>
+      <div class="qa"><span class="q">光说"忘了"太虚，钻进参数里，两种更新长得有多不一样？</span><span class="a">SFT 的参数改动又长又重合，RL 的又短又互不干涉——短到差两个数量级，正交到相似度只有十万分之一。</span><span class="form">SFT: ΔW 长 × 方向重合；RL: ΔW 短(≈1/100) × 跨任务近正交(~1e-5)</span></div>
+      <div class="qa"><span class="q">RL 改动小两个数量级，那不就是"根本没学到东西"？</span><span class="a">幅度小不等于学得少——RL 只走自己那条私有小道、不去抢公共大道，所以推得远也不越界。它目标课涨 6.8%，比 SFT 的 4.0% 还多。关键不是动多少，是动在哪。</span></div>
+      <div class="qa"><span class="q">GRPO 里"减组内均值"这一步，凭什么就把更新削成正交的？</span><span class="a">每个更新里都藏着一段四门课共用的"共享大方向"，它约等于组内平均分；减掉它，恰好把共享项抵消，只留下这门课私有的正交残差。</span><span class="form">ΔW = 共享大方向 + 私有残差；减组内均值 → 共享项抵消 → 只剩正交残差</span></div>
+      <div class="qa"><span class="q">同样是学，SFT 为什么反而死死抱住那条共享大方向？</span><span class="a">SFT 的目标是逐字逼近标准答案，那段通用本事也照单全收、反复加强；它没有"减均值"的抵消动作，共享方向不降反升，四门课全挤同一条道，后写覆盖先写。</span></div>
+      <div class="qa"><span class="q">把它升成定理，两者的干扰各被什么卡住？</span><span class="a">定理 4.5：SFT 的干扰由"箭有多长"决定（norm-limited，无内在刹车）；RL 的由"一组答案有多分散"决定（variance-limited，有天然上限）。</span><span class="form">SFT 干扰 ∝ 箭长；RL 干扰 ∝ 组内 rollout 多样性</span></div>
+      <div class="qa"><span class="q">RL 的干扰凭什么"有上限"，刹车具体是谁踩的？</span><span class="a">优势归一化把绝对幅度约掉，on-policy（只用模型此刻自己生成的答案训它）让答案随训练收敛越来越像 → 组内方差自己往下掉 → 更新幅度自动封顶，越训越温和。</span></div>
+      <div class="qa"><span class="q">既然 RL 更新彼此正交，能不能各练各的再拼一起？</span><span class="a">能——Parallel-RL：每门课各自单练一块 LoRA，再直接相加合并；因为正交、互不抹除，最朴素的拼法就保住 98% 的单练性能。</span><span class="form">各任务单练 LoRA → 直接相加合并；正交 → 互不覆盖(朴素保 98%)</span></div>
+      <div class="qa"><span class="q">朴素合并只有 98%，怎么补到超过原模型 +9.4%？</span><span class="a">Adapted 合并用系数 τ 把补丁间的微小干涉调开，冲到 102.8%（甚至超过单练）；甜点 τ≈0.65——探索够广又不互相打架的拐点。</span><span class="form">合并质量 = 探索广度 − 相互干涉；τ≈0.65 = 甜点</span></div>
+      <div class="qa"><span class="q">这套"RL 不遗忘"能放大到大模型、更多任务吗？</span><span class="a">目前只在 1.5B 底座、四门课的小规模里验证过，往大模型和更多任务外推还是未证之地——机理（减均值抵消共享方向）不依赖规模，待检验的是"正交在大规模、更多且更冲突的任务下还成不成立"。</span><span class="form">已验证域 = 1.5B × 四门课；外推 = 未验证</span></div>
+    </section>
+
+    <div class="sources">
+      <h3>来源 & 镜头存档</h3>
+      <p>
+        论文 · <a href="https://arxiv.org/abs/2608.03573">arXiv:2608.03573（abs）</a> ｜ <a href="https://arxiv.org/html/2608.03573">全文 HTML（含定理 4.5 / Table 1·2 / Parallel-RL）</a><br>
+        质量信号 · <a href="https://huggingface.co/papers/2608.03573">HuggingFace 每日论文榜（当窗口 #1 · 30 赞）</a><br>
+        关键数据 · 多阶段 SFT −23.1% / RL +24.9%（Table 1）；单任务泛化 SFT 目标 +4.0%、其他 −5.1%，RL 目标 +6.8% 不伤其他（Table 2）；RL 更新幅度小两个数量级、跨任务 ΔW 相似度 ~10⁻⁵；Parallel-RL 保 98% / Adapted 102.8% / 比原模型 +9.4% / 甜点 τ≈0.65。<br>
+        诚实交底 · 实验仅 1.5B 底座 + 四门理科课；arXiv v2 采用 ICML 模板，未见公开接收记录。<br>
+        五镜头 org 存档 · <code>~/Documents/notes/…--paper-sft-conflicts-rl-coexists__paper.org</code>（故事）· <code>…--圆桌-SFT相冲RL共存__roundtable.org</code>（思辨）· <code>…--追本-SFT冲突RL共存的正交性本质__think.org</code>（本质）· <code>…--qa-SFT遗忘RL共存靠正交更新__qa.org</code>（自测）· 脉络为手工溯源（原 skill 软链失效）。
+      </p>
+    </div>
+    <div class="sign">YSR Read Paper — 五镜头深读</div>
+  </main>
+
+  <div class="rail-r"></div>
+</div>
+</body>
+</html>
