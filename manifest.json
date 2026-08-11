@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-12",
+    "title": "透明不是能力的税，是随规模一起长的钢筋",
+    "paper": "Scaling Inherently Interpretable Language Models"
+  },
+  {
     "date": "2026-08-11",
     "title": "SFT 相冲，RL 共存：为什么背标准答案越学越崩、自己试错却能一门门叠加",
     "paper": "SFT Conflicts, RL Coexists: A Theoretical and Empirical Analysis of Multi-Task Learning Paradigms for LLMs"
