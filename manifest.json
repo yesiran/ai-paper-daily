@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-13",
+    "title": "换个地基，小模型也会推理：读一个例子就是改写记忆，想问题可以不出声",
+    "paper": "BDH-CQ: In-Context Learning with Recurrent Latent Reasoning"
+  },
+  {
     "date": "2026-08-12",
     "title": "透明不是能力的税，是随规模一起长的钢筋",
     "paper": "Scaling Inherently Interpretable Language Models"
