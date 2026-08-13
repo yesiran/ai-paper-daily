@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-14",
+    "title": "能力不全在权重里：给弱模型搭层外壳，一分钱参数不改就把它拉近大模型",
+    "paper": "AI4AI at Test-Time: Strong-to-Weak Capability Transfer via Harnesses"
+  },
+  {
     "date": "2026-08-13",
     "title": "换个地基，小模型也会推理：读一个例子就是改写记忆，想问题可以不出声",
     "paper": "BDH-CQ: In-Context Learning with Recurrent Latent Reasoning"
