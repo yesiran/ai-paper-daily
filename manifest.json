@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-17",
+    "title": "别再从头想，从最好的半句往下想",
+    "paper": "Thought-Level Beam Search for Reasoning (Gambit)"
+  },
+  {
     "date": "2026-08-16",
     "title": "给模型的『内心独白』接上一根一直断着的线",
     "paper": "Full-bandwidth transformer"
