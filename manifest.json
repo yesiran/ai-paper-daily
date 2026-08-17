@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-18",
+    "title": "把「记住」和「思考」拆成两个器官",
+    "paper": "Intern-S2-Mobius: Foundation Model with Decoupled Knowledge and Reasoning"
+  },
+  {
     "date": "2026-08-17",
     "title": "别再从头想，从最好的半句往下想",
     "paper": "Thought-Level Beam Search for Reasoning (Gambit)"
