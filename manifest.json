@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-20",
+    "title": "训练大模型，不一定要反向传播",
+    "paper": "Agentic ESOpt: Fine-Tuning Long-Horizon LLM Agents with Minimal GPU Requirements"
+  },
+  {
     "date": "2026-08-19",
     "title": "要找更好的，先去做你最没底的那一个",
     "paper": "Large Discovery Models: Empirically-grounded Model-Based Open-Ended Search"
