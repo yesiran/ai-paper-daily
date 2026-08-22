@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-23",
+    "title": "别造新世界，给旧世界套一层会诊断你弱点、还不许你作弊的壳",
+    "paper": "EnvHarness: Awakening Static Worlds for Agent Learning"
+  },
+  {
     "date": "2026-08-21",
     "title": "当人类改不动卷子了，让一群「想法不一样」的模型互相批改",
     "paper": "Co-RL: Unsupervised Reasoning Emerges from Diverse Cohort in Multi-agent RL"
