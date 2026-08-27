@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-28",
+    "title": "同一个模型，换一种语言，就换了一副大脑",
+    "paper": "Skill Issue: Are Skills Language-Invariant in LLMs?"
+  },
+  {
     "date": "2026-08-23",
     "title": "别造新世界，给旧世界套一层会诊断你弱点、还不许你作弊的壳",
     "paper": "EnvHarness: Awakening Static Worlds for Agent Learning"
