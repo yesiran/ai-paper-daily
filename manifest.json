@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-29",
+    "title": "错的信号，比对的信号更可靠",
+    "paper": "TTPO: Test-Time Policy Optimization"
+  },
+  {
     "date": "2026-08-28",
     "title": "同一个模型，换一种语言，就换了一副大脑",
     "paper": "Skill Issue: Are Skills Language-Invariant in LLMs?"
