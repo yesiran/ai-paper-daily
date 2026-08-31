@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-31",
+    "title": "世界模型卡住，不是缺数据，是缺一个又便宜又骗不倒的判分员",
+    "paper": "Agentic Game Development as a Verifiable Trajectory Data Engine for Scaling World Models"
+  },
+  {
     "date": "2026-08-30",
     "title": "机器人靠「看你做一遍」就会没学过的活",
     "paper": "Zero-WAM: In-Context World-Action Modeling from Human Videos for Open-Ended Task Generalization"
