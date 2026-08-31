@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-08-30",
+    "title": "机器人靠「看你做一遍」就会没学过的活",
+    "paper": "Zero-WAM: In-Context World-Action Modeling from Human Videos for Open-Ended Task Generalization"
+  },
+  {
     "date": "2026-08-29",
     "title": "错的信号，比对的信号更可靠",
     "paper": "TTPO: Test-Time Policy Optimization"
