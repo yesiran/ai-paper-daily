@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-02",
+    "title": "大模型教小模型，可能根本没在教",
+    "paper": "Does On-Policy Distillation Really Distill? From Noisy Teacher to Self-Improvement"
+  },
+  {
     "date": "2026-09-01",
     "title": "免费的笨办法，打赢了一整条花钱的研究线",
     "paper": "Sliding-window beats linear attention"
