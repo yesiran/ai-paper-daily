@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-03",
+    "title": "同一叠层，多走一遍",
+    "paper": "SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers"
+  },
+  {
     "date": "2026-09-02",
     "title": "大模型教小模型，可能根本没在教",
     "paper": "Does On-Policy Distillation Really Distill? From Noisy Teacher to Self-Improvement"
