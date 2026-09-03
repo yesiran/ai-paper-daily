@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-04",
+    "title": "模型其实早知道自己该看哪儿——让它在思考里说出来就行",
+    "paper": "Language Models Can Control Their Own Attention"
+  },
+  {
     "date": "2026-09-03",
     "title": "同一叠层，多走一遍",
     "paper": "SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers"
