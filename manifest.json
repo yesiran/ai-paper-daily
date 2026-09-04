@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-05",
+    "title": "编译器不只有一档速度：给它装上 -O2",
+    "paper": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions"
+  },
+  {
     "date": "2026-09-04",
     "title": "模型其实早知道自己该看哪儿——让它在思考里说出来就行",
     "paper": "Language Models Can Control Their Own Attention"
