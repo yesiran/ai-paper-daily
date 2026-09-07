@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-07",
+    "title": "一道题为什么能教会模型很多事：训练数据要看它触发了什么",
+    "paper": "Rethinking On-Policy Distillation of Large Language Models II: One Training Example"
+  },
+  {
     "date": "2026-09-05",
     "title": "编译器不只有一档速度：给它装上 -O2",
     "paper": "Compile by Training: Turning Natural-Language Specifications into Local Neural Functions"
