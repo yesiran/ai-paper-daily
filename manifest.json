@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-09",
+    "title": "模型内部能辨认推理步骤，但这一步仍可能做错",
+    "paper": "Beneath the Surface of Chains-of-Thought: A Mechanistic Interpretation of Reasoning Operations in LLMs"
+  },
+  {
     "date": "2026-09-08",
     "title": "分词也在出考题：模型每一步必须算出多少，取决于答案怎么切",
     "paper": "When Tokenization is Secretly Output Supervision"
