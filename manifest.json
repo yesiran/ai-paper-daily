@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-10",
+    "title": "压缩记忆该改多少？让模型把不确定性也记下来",
+    "paper": "Kalman Delta Networks: Uncertainty-aware Associative Memory"
+  },
+  {
     "date": "2026-09-09",
     "title": "模型内部能辨认推理步骤，但这一步仍可能做错",
     "paper": "Beneath the Surface of Chains-of-Thought: A Mechanistic Interpretation of Reasoning Operations in LLMs"
