@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-11",
+    "title": "让模型必须经过内部思考，并验证这段思考确实有用",
+    "paper": "Reason Through the Latent! Making Latent Visual Reasoning Necessary"
+  },
+  {
     "date": "2026-09-10",
     "title": "压缩记忆该改多少？让模型把不确定性也记下来",
     "paper": "Kalman Delta Networks: Uncertainty-aware Associative Memory"
