@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-12",
+    "title": "没有标准答案，也能从被带偏的自己身上学习",
+    "paper": "Negative Self-Distillation: Learning to Reason by Avoiding Flaws"
+  },
+  {
     "date": "2026-09-11",
     "title": "让模型必须经过内部思考，并验证这段思考确实有用",
     "paper": "Reason Through the Latent! Making Latent Visual Reasoning Necessary"
