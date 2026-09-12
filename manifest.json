@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-13",
+    "title": "让记忆先变成计划：机器人如何带着过去行动，又不反复重读过去",
+    "paper": "Memory as Plans: World-Action Modeling with Memory-Grounded Planning"
+  },
+  {
     "date": "2026-09-12",
     "title": "没有标准答案，也能从被带偏的自己身上学习",
     "paper": "Negative Self-Distillation: Learning to Reason by Avoiding Flaws"
