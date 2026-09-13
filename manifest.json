@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-14",
+    "title": "追踪模型怎样用上知识：把提问线索与答案内容分开检验",
+    "paper": "From Parameters to Answers: How LLMs Retrieve and Use Their Internal Knowledge"
+  },
+  {
     "date": "2026-09-13",
     "title": "让记忆先变成计划：机器人如何带着过去行动，又不反复重读过去",
     "paper": "Memory as Plans: World-Action Modeling with Memory-Grounded Planning"
