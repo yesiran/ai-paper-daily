@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-15",
+    "title": "翻译时，模型可以先换语序，再换语言",
+    "paper": "Separating Syntax from Language: A Mechanistic Account of Translation in Multilingual LLMs"
+  },
+  {
     "date": "2026-09-14",
     "title": "追踪模型怎样用上知识：把提问线索与答案内容分开检验",
     "paper": "From Parameters to Answers: How LLMs Retrieve and Use Their Internal Knowledge"
