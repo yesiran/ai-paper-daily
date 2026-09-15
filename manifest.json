@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-16",
+    "title": "模型全答YES，判断力却还在：找出答案丢失的最后一步",
+    "paper": "When Do Internal Probes Beat Reading the Answer? Miscalibrated Readouts and Behavior-Concealed Knowledge in Language Models"
+  },
+  {
     "date": "2026-09-15",
     "title": "翻译时，模型可以先换语序，再换语言",
     "paper": "Separating Syntax from Language: A Mechanistic Account of Translation in Multilingual LLMs"
