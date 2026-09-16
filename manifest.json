@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-17",
+    "title": "奖励走到哪里，也允许模型抄近路",
+    "paper": "Long-Horizon Language Model Reinforcement Learning via Progressive Point Matching"
+  },
+  {
     "date": "2026-09-16",
     "title": "模型全答YES，判断力却还在：找出答案丢失的最后一步",
     "paper": "When Do Internal Probes Beat Reading the Answer? Miscalibrated Readouts and Behavior-Concealed Knowledge in Language Models"
