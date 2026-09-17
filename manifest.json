@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-18",
+    "title": "让模型记得更久：复习旧知识，还要改变新知识的写入方式",
+    "paper": "Continual Learning Mechanisms Compose for Long-Horizon Memorization"
+  },
+  {
     "date": "2026-09-17",
     "title": "奖励走到哪里，也允许模型抄近路",
     "paper": "Long-Horizon Language Model Reinforcement Learning via Progressive Point Matching"
