@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-19",
+    "title": "少监督几个位置，为什么反而看清了推理的关键转折？",
+    "paper": "Rethinking Critic Learning in PPO: Understanding and Mitigating Value Flattening"
+  },
+  {
     "date": "2026-09-18",
     "title": "让模型记得更久：复习旧知识，还要改变新知识的写入方式",
     "paper": "Continual Learning Mechanisms Compose for Long-Horizon Memorization"
