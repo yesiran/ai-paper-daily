@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-20",
+    "title": "让图像、语言和机器人状态，在同一种隐空间里推理",
+    "paper": "Uni-LaDiR: Latent Diffusion Unifies Multimodal Reasoning"
+  },
+  {
     "date": "2026-09-19",
     "title": "少监督几个位置，为什么反而看清了推理的关键转折？",
     "paper": "Rethinking Critic Learning in PPO: Understanding and Mitigating Value Flattening"
