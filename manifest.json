@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-22",
+    "title": "教师何时该退场：让智能体从模仿走向独立优化",
+    "paper": "RetireOPD: Self-Retiring On-Policy Distillation for Agentic Reinforcement Learning"
+  },
+  {
     "date": "2026-09-21",
     "title": "ActObs：学会预测动作后果，为模型的后续探索保留余地",
     "paper": "Don't Mask the Environment: Observation Supervision Changes How Agents Explore Under RL"
