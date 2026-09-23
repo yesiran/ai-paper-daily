@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-24",
+    "title": "让记忆能够旋转：在一次更新里扩大状态追踪能力",
+    "paper": "Complex KDA: Understanding and Enhancing the Expressivity of Kimi Delta Attention"
+  },
+  {
     "date": "2026-09-22",
     "title": "教师何时该退场：让智能体从模仿走向独立优化",
     "paper": "RetireOPD: Self-Retiring On-Policy Distillation for Agentic Reinforcement Learning"
