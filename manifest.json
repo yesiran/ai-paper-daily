@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-25",
+    "title": "让模型学会答对，而不只是学会老师的口气",
+    "paper": "On Repulsive and Attractive Teachers: Separating Correctness from Behavior in Self-Distillation"
+  },
+  {
     "date": "2026-09-24",
     "title": "让记忆能够旋转：在一次更新里扩大状态追踪能力",
     "paper": "Complex KDA: Understanding and Enhancing the Expressivity of Kimi Delta Attention"
