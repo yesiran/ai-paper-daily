@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-26",
+    "title": "把逐步价值估计消去，让最终奖励指导推理训练",
+    "paper": "Bellman Policy Optimization"
+  },
+  {
     "date": "2026-09-25",
     "title": "让模型学会答对，而不只是学会老师的口气",
     "paper": "On Repulsive and Attractive Teachers: Separating Correctness from Behavior in Self-Distillation"
