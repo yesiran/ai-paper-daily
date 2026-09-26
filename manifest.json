@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-27",
+    "title": "智能体何时可以忘记：当推理的成果已有别处承载",
+    "paper": "When Can Agents Forget Their Reasoning? ICLR for Long-Horizon Agent Context Compression"
+  },
+  {
     "date": "2026-09-26",
     "title": "把逐步价值估计消去，让最终奖励指导推理训练",
     "paper": "Bellman Policy Optimization"
