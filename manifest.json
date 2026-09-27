@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-28",
+    "title": "让模型学会挑问题：用证明的压缩价值引导数学发现",
+    "paper": "Learning to Discover Interesting Mathematics"
+  },
+  {
     "date": "2026-09-27",
     "title": "智能体何时可以忘记：当推理的成果已有别处承载",
     "paper": "When Can Agents Forget Their Reasoning? ICLR for Long-Horizon Agent Context Compression"
