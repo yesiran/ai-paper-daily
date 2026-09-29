@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-30",
+    "title": "让模型承受表征变化，改善重建与生成的接口",
+    "paper": "FuseReg: Regularizing Layer Fusion Mitigates the Reconstruction-Generation Gap in Representation Autoencoders"
+  },
+  {
     "date": "2026-09-29",
     "title": "给模型的数学能力换张地图：从学科标签走向解题方法",
     "paper": "Math Reasoning in LLMs is Organized by Approach, Not Topic"
