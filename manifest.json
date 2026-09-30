@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-01",
+    "title": "不展示代码，也能传递编程增益：后训练留下了可学习的行为影子",
+    "paper": "Post-Training Leaves Behavioral Shadows on Unrelated Decisions"
+  },
+  {
     "date": "2026-09-30",
     "title": "让模型承受表征变化，改善重建与生成的接口",
     "paper": "FuseReg: Regularizing Layer Fusion Mitigates the Reconstruction-Generation Gap in Representation Autoencoders"
