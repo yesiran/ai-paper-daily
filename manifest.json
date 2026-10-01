@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-02",
+    "title": "读懂语言之前，先练会更新状态：困惑度看不见的推理起点",
+    "paper": "Lasting Effects of Abstract Pretraining Beyond Perplexity"
+  },
+  {
     "date": "2026-10-01",
     "title": "不展示代码，也能传递编程增益：后训练留下了可学习的行为影子",
     "paper": "Post-Training Leaves Behavioral Shadows on Unrelated Decisions"
