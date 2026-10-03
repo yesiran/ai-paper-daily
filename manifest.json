@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-04",
+    "title": "PoS：让智能体看见自己为何原地打转",
+    "paper": "Beyond Memory: Harnessing Long-Horizon Agents with Explicit Belief States"
+  },
+  {
     "date": "2026-10-03",
     "title": "别让学过错误答案的模型，再为这道题作证",
     "paper": "False Frontiers: Diagnosing and Mitigating Co-Cheating in Self-Evolving Search Agents"
