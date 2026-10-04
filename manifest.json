@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-05",
+    "title": "一次更准之后，还能靠多试找到新解吗？后训练的锐化税",
+    "paper": "Sharpening Tax in Post-Training"
+  },
+  {
     "date": "2026-10-04",
     "title": "PoS：让智能体看见自己为何原地打转",
     "paper": "Beyond Memory: Harnessing Long-Horizon Agents with Explicit Belief States"
