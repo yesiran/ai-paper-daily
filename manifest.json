@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-06",
+    "title": "在线蒸馏为什么有效？把走哪条路、怎样纠错和改动多大拆开",
+    "paper": "On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics"
+  },
+  {
     "date": "2026-10-05",
     "title": "一次更准之后，还能靠多试找到新解吗？后训练的锐化税",
     "paper": "Sharpening Tax in Post-Training"
