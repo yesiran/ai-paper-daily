@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-09",
+    "title": "让模型整理自己的工作台：上下文开始成为可学习的状态",
+    "paper": "Context Language Models"
+  },
+  {
     "date": "2026-10-06",
     "title": "在线蒸馏为什么有效？把走哪条路、怎样纠错和改动多大拆开",
     "paper": "On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics"
