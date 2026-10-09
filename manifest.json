@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-10",
+    "title": "把事后踩坑，练成行动前的预判",
+    "paper": "Self-Retrospection Distillation: Turning Post-hoc Experiences into Prior Foresight"
+  },
+  {
     "date": "2026-10-09",
     "title": "让模型整理自己的工作台：上下文开始成为可学习的状态",
     "paper": "Context Language Models"
