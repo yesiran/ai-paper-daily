@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-14",
+    "title": "循环模型的省钱条件：让终点能够替代过程",
+    "paper": "Towards Looped Models Done Right, Part II: Rethinking at Fixed Points"
+  },
+  {
     "date": "2026-10-13",
     "title": "模型为什么没有继续算：一个小适配器启动引用链接力",
     "paper": "Transformers Stop Thinking Too Early, and a Tiny LoRA Fixes It"
