@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-15",
+    "title": "两个开头 token，接通基础模型已有的推理能力",
+    "paper": "Base Models Can Reason By Taking a Cue From Training Data"
+  },
+  {
     "date": "2026-10-14",
     "title": "循环模型的省钱条件：让终点能够替代过程",
     "paper": "Towards Looped Models Done Right, Part II: Rethinking at Fixed Points"
