@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-16",
+    "title": "把成功经历拆成多步预测，让智能体从一次行动中学得更多",
+    "paper": "Co-Evolving Acting and Forecasting for Language Agents"
+  },
+  {
     "date": "2026-10-15",
     "title": "两个开头 token，接通基础模型已有的推理能力",
     "paper": "Base Models Can Reason By Taking a Cue From Training Data"
