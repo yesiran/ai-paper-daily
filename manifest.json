@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-17",
+    "title": "候选可以提前读，判断必须当场做",
+    "paper": "Jeva: System One Models from First Principles"
+  },
+  {
     "date": "2026-10-16",
     "title": "把成功经历拆成多步预测，让智能体从一次行动中学得更多",
     "paper": "Co-Evolving Acting and Forecasting for Language Agents"
