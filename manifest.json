@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-18",
+    "title": "潜在思维链里读得出答案，模型就真的靠它推理了吗？",
+    "paper": "Does Latent Chain-of-Thought Actually Reason? A Single, Unifying Taxonomy for Latent Reasoning"
+  },
+  {
     "date": "2026-10-17",
     "title": "候选可以提前读，判断必须当场做",
     "paper": "Jeva: System One Models from First Principles"
