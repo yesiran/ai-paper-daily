@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-19",
+    "title": "给模型一条复制通道，也给学习信号一条回路",
+    "paper": "Copy-Paste Language Models"
+  },
+  {
     "date": "2026-10-18",
     "title": "潜在思维链里读得出答案，模型就真的靠它推理了吗？",
     "paper": "Does Latent Chain-of-Thought Actually Reason? A Single, Unifying Taxonomy for Latent Reasoning"
