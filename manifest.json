@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-20",
+    "title": "给模型一条复制通道，也改变它学习的路径",
+    "paper": "Copy-Paste Language Models"
+  },
+  {
     "date": "2026-10-19",
     "title": "给模型一条复制通道，也给学习信号一条回路",
     "paper": "Copy-Paste Language Models"
