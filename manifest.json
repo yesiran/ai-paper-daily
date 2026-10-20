@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-21",
+    "title": "教师的进步也要筛选：用训练中途的方向，判断哪些变化值得学生学",
+    "paper": "Waypoint-OPD: Transferring RL-Induced Policy Shifts via Gated On-Policy Distillation"
+  },
+  {
     "date": "2026-10-20",
     "title": "给模型一条复制通道，也改变它学习的路径",
     "paper": "Copy-Paste Language Models"
