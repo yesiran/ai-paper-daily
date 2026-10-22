@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-23",
+    "title": "读得出推理，不等于模型用它推理",
+    "paper": "Does Latent Chain-of-Thought Actually Reason? A Single, Unifying Taxonomy for Latent Reasoning"
+  },
+  {
     "date": "2026-10-22",
     "title": "模型会不会推理，还取决于它怎样开头",
     "paper": "Base Models Can Reason By Taking a Cue From Training Data"
