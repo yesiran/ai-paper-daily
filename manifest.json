@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-25",
+    "title": "让模型在连续状态里想，在需要行动时说出来",
+    "paper": "Hybrid Reasoning Agents"
+  },
+  {
     "date": "2026-10-24",
     "title": "读得出思考，不等于用它思考",
     "paper": "Does Latent Chain-of-Thought Actually Reason? A Single, Unifying Taxonomy for Latent Reasoning"
