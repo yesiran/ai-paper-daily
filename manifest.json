@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-27",
+    "title": "模型说“等等”，要分清措辞的继承与推理的进步",
+    "paper": "Inherited, Not Invented: Tracing the Provenance of Wait in Reasoning Models"
+  },
+  {
     "date": "2026-10-25",
     "title": "让模型在连续状态里想，在需要行动时说出来",
     "paper": "Hybrid Reasoning Agents"
