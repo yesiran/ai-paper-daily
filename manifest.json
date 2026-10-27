@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-28",
+    "title": "思考不必句句成文：让潜在推理接上工具与工作记忆",
+    "paper": "Hybrid Reasoning Agents"
+  },
+  {
     "date": "2026-10-27",
     "title": "模型说“等等”，要分清措辞的继承与推理的进步",
     "paper": "Inherited, Not Invented: Tracing the Provenance of Wait in Reasoning Models"
