@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-29",
+    "title": "让模型分清‘我也这么想’与‘你让我这么想’",
+    "paper": "Did the Model Use That? Counterfactual Training Boosts Self-Attribution in Language Models"
+  },
+  {
     "date": "2026-10-28",
     "title": "思考不必句句成文：让潜在推理接上工具与工作记忆",
     "paper": "Hybrid Reasoning Agents"
