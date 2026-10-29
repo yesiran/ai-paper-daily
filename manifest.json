@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-30",
+    "title": "让扩散模型学会接老师的课，也能修改自己的画",
+    "paper": "Nemotron-Labs-Diffusion-Uni: Elastic Self-Refining Unified Diffusion LLM with Cross-Paradigm On-Policy Distillation"
+  },
+  {
     "date": "2026-10-29",
     "title": "让模型分清‘我也这么想’与‘你让我这么想’",
     "paper": "Did the Model Use That? Counterfactual Training Boosts Self-Attribution in Language Models"
