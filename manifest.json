@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-01",
+    "title": "让模型认出同一个世界，先连对观察",
+    "paper": "Proving and Improving the Platonic Representation Hypothesis with JEPAs"
+  },
+  {
     "date": "2026-10-30",
     "title": "让扩散模型学会接老师的课，也能修改自己的画",
     "paper": "Nemotron-Labs-Diffusion-Uni: Elastic Self-Refining Unified Diffusion LLM with Cross-Paradigm On-Policy Distillation"
