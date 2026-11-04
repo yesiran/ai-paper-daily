@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-05",
+    "title": "从例子到答案：模型怎样打开提示中的临时记忆",
+    "paper": "A Circuit for In-Context Learning"
+  },
+  {
     "date": "2026-11-03",
     "title": "模型如何学到同一个世界：关键在于把哪些观察视为一对",
     "paper": "Proving and Improving the Platonic Representation Hypothesis with JEPAs"
