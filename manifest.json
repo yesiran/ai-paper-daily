@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-06",
+    "title": "更会完成任务，可能来自更会纠错；预算决定优势能否兑现",
+    "paper": "What Does Multi-Turn Reinforcement Learning Really Improve in LLM Agents?"
+  },
+  {
     "date": "2026-11-05",
     "title": "从例子到答案：模型怎样打开提示中的临时记忆",
     "paper": "A Circuit for In-Context Learning"
