@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-09",
+    "title": "让辅助框架创造可学经历，撤掉辅助后检验模型是否学会",
+    "paper": "Harness-S: Learning from Sibling Harnesses for Generalizable Agent Training"
+  },
+  {
     "date": "2026-11-07",
     "title": "让独立模型学出可对接的表征：关键是同一世界的不同观察",
     "paper": "Proving and Improving the Platonic Representation Hypothesis with JEPAs"
