@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-10",
+    "title": "自蒸馏的下一步：让提供监督的教师也接受检验",
+    "paper": "On-Policy Self-Distillation with Teacher Evolution"
+  },
+  {
     "date": "2026-11-09",
     "title": "让辅助框架创造可学经历，撤掉辅助后检验模型是否学会",
     "paper": "Harness-S: Learning from Sibling Harnesses for Generalizable Agent Training"
