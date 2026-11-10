@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-11",
+    "title": "借不同框架走通难题，模型能把经验带回自己吗？",
+    "paper": "Harness-S: Learning from Sibling Harnesses for Generalizable Agent Training"
+  },
+  {
     "date": "2026-11-10",
     "title": "自蒸馏的下一步：让提供监督的教师也接受检验",
     "paper": "On-Policy Self-Distillation with Teacher Evolution"
