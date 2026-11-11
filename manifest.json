@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-12",
+    "title": "会把任务救回来，不等于每一步都更可靠",
+    "paper": "What Does Multi-Turn Reinforcement Learning Really Improve in LLM Agents?"
+  },
+  {
     "date": "2026-11-11",
     "title": "借不同框架走通难题，模型能把经验带回自己吗？",
     "paper": "Harness-S: Learning from Sibling Harnesses for Generalizable Agent Training"
