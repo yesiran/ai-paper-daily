@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-13",
+    "title": "共享缓存，也能改变模型怎样学习",
+    "paper": "DepthGraft: Structural Regularization through Hierarchical Cross-Layer KV Reconstruction"
+  },
+  {
     "date": "2026-11-12",
     "title": "会把任务救回来，不等于每一步都更可靠",
     "paper": "What Does Multi-Turn Reinforcement Learning Really Improve in LLM Agents?"
