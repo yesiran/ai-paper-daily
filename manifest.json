@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-14",
+    "title": "让经验能被回查，减少智能体越记越错",
+    "paper": "Don't Just Trust Your Memory: Evidence-Linked Memory Reduces Memory-Induced Degradation in LLM Agents"
+  },
+  {
     "date": "2026-11-13",
     "title": "共享缓存，也能改变模型怎样学习",
     "paper": "DepthGraft: Structural Regularization through Hierarchical Cross-Layer KV Reconstruction"
