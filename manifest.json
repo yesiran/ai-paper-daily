@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-16",
+    "title": "让模型学会给下一次尝试留下有用经验",
+    "paper": "Experience-Handoff Reinforcement Learning for Recursive Self-Improvement"
+  },
+  {
     "date": "2026-11-15",
     "title": "让下一次尝试，给这一次的经验笔记打分",
     "paper": "Experience-Handoff Reinforcement Learning for Recursive Self-Improvement"
