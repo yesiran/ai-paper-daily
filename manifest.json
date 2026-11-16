@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-17",
+    "title": "让压缩记忆读得准，模型就不必擦得狠",
+    "paper": "Muir: Linear Attention with Sensitivity-Allocated Gating and Matched-Filter Readout"
+  },
+  {
     "date": "2026-11-16",
     "title": "让模型学会给下一次尝试留下有用经验",
     "paper": "Experience-Handoff Reinforcement Learning for Recursive Self-Improvement"
