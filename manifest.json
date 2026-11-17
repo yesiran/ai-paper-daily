@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-18",
+    "title": "让循环模型保存每次改动：拆开输入、总量与分配",
+    "paper": "Loopback Transformer: Towards a Unified View of Residual Looped Transformers"
+  },
+  {
     "date": "2026-11-17",
     "title": "让压缩记忆读得准，模型就不必擦得狠",
     "paper": "Muir: Linear Attention with Sensitivity-Allocated Gating and Matched-Filter Readout"
