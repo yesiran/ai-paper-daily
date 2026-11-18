@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-19",
+    "title": "让计算状态跨过 token：语言模型多了一条横向通路",
+    "paper": "Latent Lattice Language Models"
+  },
+  {
     "date": "2026-11-18",
     "title": "让循环模型保存每次改动：拆开输入、总量与分配",
     "paper": "Loopback Transformer: Towards a Unified View of Residual Looped Transformers"
