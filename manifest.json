@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-20",
+    "title": "让评价函数同时指路、选答案、决定何时停",
+    "paper": "Energy-Based Reasoners: Your Recurrent Reasoner Should Be an Energy-Based Model"
+  },
+  {
     "date": "2026-11-19",
     "title": "让计算状态跨过 token：语言模型多了一条横向通路",
     "paper": "Latent Lattice Language Models"
