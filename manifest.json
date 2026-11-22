@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-23",
+    "title": "自进化卡在哪里：模型提出了好办法，评测却认不出来",
+    "paper": "The Resolution Hypothesis: Agent Evolution's Key Is Identifying Improvements"
+  },
+  {
     "date": "2026-11-20",
     "title": "让评价函数同时指路、选答案、决定何时停",
     "paper": "Energy-Based Reasoners: Your Recurrent Reasoner Should Be an Energy-Based Model"
